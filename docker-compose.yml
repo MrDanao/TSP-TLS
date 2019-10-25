@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+
+  server:
+    build: ./generic-openssl
+    container_name: server
+    tty: true
+    networks:
+      - tls
+    expose:
+      - 443
+    volumes:
+      - ./cert:/cert
+      - ./keylog:/keylog
+    command: s_server -key /cert/key.pem -cert /cert/cert.pem -accept 443 -www -keylogfile /keylog/key.log
+
+  client:
+    build: ./generic-openssl
+    container_name: client
+    tty: true
+    networks:
+      - tls
+
+networks:
+  tls:
