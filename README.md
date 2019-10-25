@@ -5,6 +5,15 @@
 - docker-ce
 - docker-compose
 
+## Quelques détails
+
+- Dockerfile (`generic-openssl/Dockerfile`): Alpine / Paquets : openssl, curl.
+- 1 réseau `tls`. L'hôte fournit le bridge, ayant une interface réseau sur ce réseau, elle sera utilisée pour les captures de trames avec Wireshark.
+- 1 container `server`, directement lancé comme serveur OpenSSl. Buildé depuis le Dockerfile. Connecté au réseau `tls`.
+- 1 container `client` qui peut servir de client OpenSSL ou HTTP/S avec cURL. Buildé depuis le Dockerfile. Connecté au réseau `tls`.
+- Certificat TLS et clé privé par défault utilisés par le container `server`, dans `cert/`.
+- Output des secrets TLS dans `keylog/key.log`. Notamment utilisé pour déchiffrer les messages HTTPS (ou autre) avec Wireshark.
+
 ## Use
 
 ```
