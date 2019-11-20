@@ -26,7 +26,7 @@ $ docker-compose up -d
 - HTTPS Client vers Server :
 
 ```
-$ docker exec -it server curl https://server
+$ docker exec -it client curl -k https://server
 ```
 
 Le serveur OpenSSL est lancé avec le paramètre `-keylogfile`. Dès la première connexion TLS, le fichier `keylog/key.log` (sur l'hôte) peut être exploité par Wireshark pour déchiffrer les messages HTTPS.
