@@ -11,14 +11,17 @@
 
 1 Dockerfile par version d'OpenSSL :
 - `docker-openssl/1.0.2t/Dockerfile`
+- `docker-openssl/1.1.0l/Dockerfile`
 - `docker-openssl/1.1.1d/Dockerfile`
 
 ### Docker-Compose
 
 - 1 réseau `tls`. L'hôte fournit le bridge, ayant une interface réseau sur ce réseau, elle sera utilisée pour les captures de trames avec Wireshark.
 - 1 container `server-102t`, directement lancé comme serveur OpenSSL 1.0.2t.
+- 1 container `server-110l`, directement lancé comme serveur OpenSSL 1.1.0l.
 - 1 container `server-111d`, directement lancé comme serveur OpenSSL 1.1.1d.
 - 1 container `client-102t` qui peut servir de client OpenSSL 1.0.2t ou HTTPS avec cURL.
+- 1 container `client-110l` qui peut servir de client OpenSSL 1.1.0l ou HTTPS avec cURL.
 - 1 container `client-111d` qui peut servir de client OpenSSL 1.1.1d ou HTTPS avec cURL.
 - Certificat et clé privé par défault utilisés par les containers `server-*`, dans `cert/`.
 - Output des secrets TLS dans `keylog/key.log`. Notamment utilisé pour déchiffrer les messages HTTPS (ou autre) avec Wireshark.
@@ -51,7 +54,7 @@ Un exemple de capture avec un message HTTPS déchiffré :
 
 ![HTTPS déchiffré](img/wireshark_https_dechiffre.png)
 
-Pour la version d'OpenSSL 1.0.2t, l'extraction des keylogs n'est pas implémentée. Il possible de les obtenir depuis `client-102t` avec les exemples suivants :
+Pour les versions d'OpenSSL 1.0.2t et 1.1.0l, l'extraction des keylogs n'est pas implémentée. Il est possible de les obtenir depuis `client-102t` ou `client-110l` avec les exemples suivants :
 
 ```
 $ SSLKEYLOGFILE=./secrets.keylog curl -k https://server-102t

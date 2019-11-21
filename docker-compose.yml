@@ -15,6 +15,19 @@ services:
       - ./keylog:/keylog
     command: s_server -key /cert/key.pem -cert /cert/cert.pem -accept 443 -www
 
+  server-110l:
+    build: ./docker-openssl/1.1.0l
+    container_name: server-110l
+    tty: true
+    networks:
+      - tls
+    expose:
+      - 443
+    volumes:
+      - ./cert:/cert
+      - ./keylog:/keylog
+    command: s_server -key /cert/key.pem -cert /cert/cert.pem -accept 443 -www
+
   server-111d:
     build: ./docker-openssl/1.1.1d
     container_name: server-111d
@@ -31,6 +44,13 @@ services:
   client-102t:
     build: ./docker-openssl/1.0.2t
     container_name: client-102t
+    tty: true
+    networks:
+      - tls
+
+  client-110l:
+    build: ./docker-openssl/1.1.0l
+    container_name: client-110l
     tty: true
     networks:
       - tls

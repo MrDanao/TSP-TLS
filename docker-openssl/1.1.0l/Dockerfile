@@ -1,19 +1,19 @@
-# erreur à la compilation
-
-FROM alpine:3.10
+FROM ubuntu:latest
 
 ARG OPENSSL_VERSION=1.1.0l
 
-RUN apk update && \
-    apk add --no-cache perl build-base && \
-    rm -rf /var/cache/apk/*
+RUN apt update && \
+    apt upgrade -y && \
+    apt install -y wget perl build-essential
 
 RUN wget https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz -O - | tar -xz
 
 WORKDIR /openssl-${OPENSSL_VERSION}
 
-RUN ./config --prefix=/usr/local/openssl --openssldir=/usr/local/openssl && \
+ENV LD_LIBRARY_PATH=/usr/local/lib
+
+RUN ./config && \
     make && \
     make install
 
-#ENTRYPOINT ["openssl"]
+ENTRYPOINT ["openssl"]
