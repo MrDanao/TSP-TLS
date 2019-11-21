@@ -4,6 +4,8 @@
 
 - docker-ce
 - docker-compose
+- python3
+- virtualenv
 
 ## Quelques détails
 
@@ -37,7 +39,7 @@ $ docker-compose up -d
 
 ## bac à sable
 
-- HTTPS Client vers Server :
+### HTTPS Client vers Server
 
 ```
 $ docker exec -it client-102t curl -k https://server-102t
@@ -60,3 +62,22 @@ Pour les versions d'OpenSSL 1.0.2t et 1.1.0l, l'extraction des keylogs n'est pas
 $ SSLKEYLOGFILE=./secrets.keylog curl -k https://server-102t
 $ SSLKEYLOGFILE=./secrets.keylog curl -k https://server-111d
 ```
+
+### Automatisation de l'exécution des sessions TLS
+
+Dans le dossier `scripts/`.
+
+Le script Python `main.py` permet d'établir des sessions TLS vers tous les serveurs OpenSSL depuis chaque client OpenSSL.
+
+Pour le moment ce script récupère seulement la sortie standard des clients et les écrit dans le dossier `results/`.
+
+```
+$ cd scripts/
+$ virtualenv -p python3 ~/.venv/tsp-tls
+$ source ~/.venv/tsp-tls/bin/activate
+$ pip install -r requirements.txt
+$ chmod +x main.py
+$ ./main.py
+```
+
+:satisfied: :hand: A revoir : la commande `docker exec -it ...` semble donner davantage de logs (session TLS pas totalement établie à l'aide de Python?)...
