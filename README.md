@@ -40,7 +40,7 @@ $ docker-compose up -d
 - HTTPS Client vers Server :
 
 ```
-$ docker exec -it client-102t curl -k https://server-1O2t
+$ docker exec -it client-102t curl -k https://server-102t
 $ docker exec -it client-102t openssl s_client -connect server-111d:443
 ```
 
@@ -54,11 +54,9 @@ Un exemple de capture avec un message HTTPS déchiffré :
 
 ![HTTPS déchiffré](img/wireshark_https_dechiffre.png)
 
-Pour les versions d'OpenSSL 1.0.2t et 1.1.0l, l'extraction des keylogs n'est pas implémentée. Il est possible de les obtenir depuis `client-102t` ou `client-110l` avec les exemples suivants :
+Pour les versions d'OpenSSL 1.0.2t et 1.1.0l, l'extraction des keylogs n'est pas implémentée. Il est possible de les obtenir depuis `client-102t` ou `client-110l` avec les exemples suivants en utilisant cURL :
 
 ```
 $ SSLKEYLOGFILE=./secrets.keylog curl -k https://server-102t
 $ SSLKEYLOGFILE=./secrets.keylog curl -k https://server-111d
-$ SSLKEYLOGFILE=./secrets.keylog openssl s_client -connect server-102t:443
-$ SSLKEYLOGFILE=./secrets.keylog openssl s_client -connect server-111d:443
 ```
