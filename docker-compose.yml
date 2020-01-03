@@ -2,9 +2,9 @@ version: '3'
 
 services:
 
-  server-102t:
-    build: ./docker-openssl/1.0.2t
-    container_name: server-102t
+  server-102u:
+    build: ./docker-openssl/1.0.2u
+    container_name: server-102u
     tty: true
     networks:
       - tls
@@ -41,9 +41,9 @@ services:
       - ./keylog:/keylog
     command: s_server -key /cert/key.pem -cert /cert/cert.pem -accept 443 -www -keylogfile /keylog/key.log
 
-  client-102t:
-    build: ./docker-openssl/1.0.2t
-    container_name: client-102t
+  client-102u:
+    build: ./docker-openssl/1.0.2u
+    container_name: client-102u
     tty: true
     networks:
       - tls
