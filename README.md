@@ -67,7 +67,7 @@ $ SSLKEYLOGFILE=./secrets.keylog curl -k https://server-111d
 
 Dans le dossier `scripts/`.
 
-Le script Python `main.py` permet d'établir des sessions TLS vers tous les serveurs OpenSSL depuis chaque client OpenSSL.
+Le script Python `main.py` permet d'établir des sessions TLS vers tous les serveurs OpenSSL depuis chaque client OpenSSL, pour chaque version de TLS et ciphers supportés.
 
 Pour le moment ce script récupère seulement la sortie standard des clients et les écrit dans le dossier `results/`.
 
