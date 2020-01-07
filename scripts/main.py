@@ -30,6 +30,8 @@ def list_openssl_versions(path="../docker-openssl"):
         v = v.replace(".", "")
         versions.append(v)
 
+    versions.sort()
+
     return versions
 
 
@@ -44,7 +46,7 @@ def exec_tls_session(docker_client, openssl_client_version, openssl_server_versi
         cipher: Nom du cipher utilisé.
 
     Returns:
-        Chaîne de caractères de la sortie standard de l'exécution de la session TLS.
+        Exit code et sortie standard de l'exécution de la session TLS.
     """
     container = docker_client.containers.get("client-" + openssl_client_version)
 
@@ -53,16 +55,34 @@ def exec_tls_session(docker_client, openssl_client_version, openssl_server_versi
     else:
         res = container.exec_run(cmd="openssl s_client -connect server-" + openssl_server_version + ":443 -cipher " + cipher + " -tls" + tls_version)
 
+    status = res.exit_code
     stdout = res.output.decode("utf-8")
 
-    return stdout
+    return status, stdout
 
 
-def write_tls_session_logs(logs, openssl_client_version, openssl_server_version, tls_version, cipher):
+def tls_session_passed(session):
+    """Donne le status de la session TLS.
+
+    Args:
+        session: Exit code et sortie standard de l'exécution de la session TLS.
+
+    Returns:
+        True si la session TLS passed, sinon False.
+    """
+    tls_session_exit_code = session[0]
+
+    if tls_session_exit_code == 0:
+        return True
+    else:
+        return False
+
+
+def write_tls_session_logs(session, openssl_client_version, openssl_server_version, tls_version, cipher):
     """Ecrit les logs d'une sessions TLS dans un fichier.
 
     Args:
-        logs: Chaîne de caractères de la sortie standard de l'exécution de la session TLS.
+        session: Exit code et sortie standard de l'exécution de la session TLS.
         openssl_client_version: Version OpenSSL du client sans les points.
         openssl_server_version: Version OpensSSL du serveur sans les points.
         tls_version: Version TLS de utilisée.
@@ -72,12 +92,15 @@ def write_tls_session_logs(logs, openssl_client_version, openssl_server_version,
         None
     """
     path = "results/client_" + openssl_client_version + "/server_" + openssl_server_version + "/tls" + tls_version + "/"
+    tls_session_stdout = session[1]
+
+    filename = cipher + ".log "
 
     if not os.path.exists(path):
         os.makedirs(path)
 
-    f = open(path + cipher, "w+")
-    f.write(logs)
+    f = open(path + filename, "w+")
+    f.write(tls_session_stdout)
 
     return None
 
@@ -127,6 +150,66 @@ def get_tls_versions(openssl_version):
     return tls_versions
 
 
+def get_tls_session_secrets(session, tls_version):
+    """Donne les secrets d'une session TLS.
+
+    Args:
+        session: Exit code et sortie standard de l'exécution de la session TLS.
+        tls_version: Version TLS de utilisée.
+
+    Returns:
+        Session-ID et Master-Key d'une session TLS.
+    """
+    session_id = "None"
+    master_key = "None"
+
+    if tls_session_passed(session):
+        if tls_version == "1_3":
+            session_id = "TBD"
+            master_key = "TBD"
+        else:
+            logs = session[1]
+            for line in logs.split("\n"):
+                if "Session-ID:" in line:
+                    session_id = line.replace(" ", "").split(":")[1]
+                elif "Master-Key:" in line:
+                    master_key = line.replace(" ", "").split(":")[1]
+
+    return session_id, master_key
+
+
+def write_tls_session_secrets(tls_secrets, openssl_client_version, openssl_server_version, tls_version, cipher):
+    """Ecrit les secrets d'une session TLS avec le bon format dans un fichier.
+
+    Args:
+        tls_secrets: Session-ID et Master-Key d'une session TLS.
+        openssl_client_version: Version OpenSSL du client sans les points.
+        openssl_server_version: Version OpensSSL du serveur sans les points.
+        tls_version: Version TLS de utilisée.
+        cipher: Nom du cipher utilisé.
+
+    Returns:
+        None
+    """
+    path = "results/client_" + openssl_client_version + "/server_" + openssl_server_version + "/tls" + tls_version + "/"
+    filename = cipher + ".secrets"
+    session_id = tls_secrets[0]
+    master_key = tls_secrets[1]
+
+    if tls_version == "1_3":
+        content = "TBD"
+    else:
+        content = "RSA Session-ID:" + session_id + " Master-Key:" + master_key + "\n"
+
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+    f = open(path + filename, "w+")
+    f.write(content)
+
+    return None
+
+
 def main():
 
     openssl_versions = list_openssl_versions("../docker-openssl")
@@ -138,8 +221,11 @@ def main():
             ciphers = get_ciphers(docker_client, c, tls_version)
             for cipher in ciphers:
                 for s in openssl_versions:
-                    session_logs = exec_tls_session(docker_client, c, s, tls_version, cipher)
-                    write_tls_session_logs(session_logs, c, s, tls_version, cipher)
+                    session = exec_tls_session(docker_client, c, s, tls_version, cipher)
+                    write_tls_session_logs(session, c, s, tls_version, cipher)
+                    if tls_session_passed(session):
+                        tls_secrets = get_tls_session_secrets(session, tls_version)
+                        write_tls_session_secrets(tls_secrets, c, s, tls_version, cipher)
                     print("[" + bcolors.OKGREEN + "DONE" + bcolors.ENDC + "] Client " + c + " | Server " + s + " | TLS " + tls_version + " | " + cipher)
 
 
