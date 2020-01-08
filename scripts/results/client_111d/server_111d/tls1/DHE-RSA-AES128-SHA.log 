@@ -30,6 +30,7 @@ Ob3wgkk7sK6YuyKR5YllT9vOGqBw/Ha9x7cdRaP4gKEnxrMIdxEIWJifz72TF7xI
 SId9FHVKy9awaunIGJelJ+v2J4ZHkUk2vHLjR57SQdv+ENuMeQZX34PwvcLvXhRj
 joX7tBBYYoB/haFlW9WMHM7HyYryMAirxnF3ltXWley0vnLXlkFLRSp4xzr0ERZW
 1vXmmTv+c+yXzTo03A4BcEBZg0gN4FjM3lKJjiC9M6hJ8oVIJ+40MoKTgNjaupb7
+DONE
 vXxBDJcqvz+HMrruHXw3
 -----END CERTIFICATE-----
 subject=C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
@@ -52,28 +53,27 @@ No ALPN negotiated
 SSL-Session:
     Protocol  : TLSv1
     Cipher    : DHE-RSA-AES128-SHA
-    Session-ID: 072190340E60FE55F859D9ADCB7C530AF3E41FA09F3839799F720584B22F08EC
+    Session-ID: A35D9562EA91BD2CFB8AC9D7A295A1A19059FFD4D599AA3DC3164648D272EC55
     Session-ID-ctx: 
-    Master-Key: 1D8E9B0B52DB5D11A90F2D974F5B781CFC2010456C66D152880852AB88E81035645CBFECDFE42A9902F211763FA5DA11
+    Master-Key: 432345C0DFA4589E0B7DC301FAC9C396848D089109277ADE4584679E9F0AC1075295A12FB48F75F807195619C1983B70
     PSK identity: None
     PSK identity hint: None
     SRP username: None
     TLS session ticket lifetime hint: 7200 (seconds)
     TLS session ticket:
-    0000 - d0 3d d3 be 45 b4 0f ab-fd fd da 08 c1 cc f2 f9   .=..E...........
-    0010 - a0 fb 4c e7 18 c5 83 60-56 41 a8 d7 60 6a 08 46   ..L....`VA..`j.F
-    0020 - 5f 73 b8 90 e4 03 7f f2-c6 2c 36 6a 91 fa 19 be   _s.......,6j....
-    0030 - 88 7e 59 4e 1f 55 52 8c-fe e9 39 d2 51 73 99 97   .~YN.UR...9.Qs..
-    0040 - ca ae c3 e9 ec 7a bb e6-f4 a3 89 09 cc 04 f6 bf   .....z..........
-    0050 - 65 07 ac 55 85 e4 84 a1-d2 cc 3c 45 4f 92 d6 09   e..U......<EO...
-    0060 - 5a 29 2d 8e d5 8a 78 d1-bd da 46 00 13 17 1d 9c   Z)-...x...F.....
-    0070 - 31 ef eb 65 e7 2d 77 de-91 b6 89 23 47 c0 93 cc   1..e.-w....#G...
-    0080 - 99 2f c8 dd ec 63 56 3d-8c a0 b9 44 eb 4b 1d fe   ./...cV=...D.K..
-    0090 - c6 6e 4e 22 4f ea 70 c3-e4 4f ac 91 86 96 03 93   .nN"O.p..O......
+    0000 - 3a 97 6d 5d b7 ca c5 7b-5f 5f 8d f3 f2 2c 2c dc   :.m]...{__...,,.
+    0010 - 9a be ac 67 7e d2 d4 f3-b5 34 cd f8 89 a9 2c 97   ...g~....4....,.
+    0020 - 91 6a c7 8c 32 95 bc d3-52 2a 63 0c e1 c2 72 5c   .j..2...R*c...r\
+    0030 - 61 ef 67 dd 56 4e 73 5b-ec 69 f5 f7 de ad 07 e2   a.g.VNs[.i......
+    0040 - 58 f0 8a d9 51 ec fc 18-3a 3b 03 36 03 d8 07 fa   X...Q...:;.6....
+    0050 - 98 e5 cf 47 f1 62 dc 99-c8 71 1e 0e 19 7e 5e d0   ...G.b...q...~^.
+    0060 - 8c f7 45 2c df c8 34 40-47 65 e7 77 25 62 d9 08   ..E,..4@Ge.w%b..
+    0070 - 8c e7 60 c5 d0 67 7e 8c-d1 58 8d 92 44 a9 a2 37   ..`..g~..X..D..7
+    0080 - be 35 b7 42 77 df 45 78-c5 75 cd ce 81 42 59 6d   .5.Bw.Ex.u...BYm
+    0090 - fe 41 e1 b4 b1 0e db 91-bf f0 3d f5 f5 ec 65 62   .A........=...eb
 
-    Start Time: 1578439400
+    Start Time: 1578442086
     Timeout   : 7200 (sec)
     Verify return code: 18 (self signed certificate)
     Extended master secret: yes
 ---
-DONE

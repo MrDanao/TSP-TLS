@@ -12,7 +12,6 @@ services:
       - 443
     volumes:
       - ./cert:/cert
-      - ./keylog:/keylog
     command: s_server -key /cert/key.pem -cert /cert/cert.pem -accept 443 -www
 
   server-102u:
@@ -25,7 +24,6 @@ services:
       - 443
     volumes:
       - ./cert:/cert
-      - ./keylog:/keylog
     command: s_server -key /cert/key.pem -cert /cert/cert.pem -accept 443 -www
 
   server-110l:
@@ -38,7 +36,6 @@ services:
       - 443
     volumes:
       - ./cert:/cert
-      - ./keylog:/keylog
     command: s_server -key /cert/key.pem -cert /cert/cert.pem -accept 443 -www
 
   server-111d:
@@ -51,8 +48,7 @@ services:
       - 443
     volumes:
       - ./cert:/cert
-      - ./keylog:/keylog
-    command: s_server -key /cert/key.pem -cert /cert/cert.pem -accept 443 -www -keylogfile /keylog/key.log
+    command: s_server -key /cert/key.pem -cert /cert/cert.pem -accept 443 -www
 
   client-102t:
     build: ./docker-openssl/1.0.2t

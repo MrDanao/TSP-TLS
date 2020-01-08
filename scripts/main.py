@@ -51,7 +51,11 @@ def exec_tls_session(docker_client, openssl_client_version, openssl_server_versi
     container = docker_client.containers.get("client-" + openssl_client_version)
 
     if tls_version == "1_3":
-        res = container.exec_run(cmd="openssl s_client -connect server-" + openssl_server_version + ":443 -ciphersuites " + cipher + " -tls" + tls_version)
+        if "111" in openssl_client_version:
+            res = container.exec_run(cmd="openssl s_client -connect server-" + openssl_server_version + ":443 -ciphersuites " + cipher + " -tls" + tls_version + " -keylogfile tls.secrets")
+        else:
+            res = container.exec_run(
+                cmd="openssl s_client -connect server-" + openssl_server_version + ":443 -ciphersuites " + cipher + " -tls" + tls_version)
     else:
         res = container.exec_run(cmd="openssl s_client -connect server-" + openssl_server_version + ":443 -cipher " + cipher + " -tls" + tls_version)
 
@@ -150,39 +154,46 @@ def get_tls_versions(openssl_version):
     return tls_versions
 
 
-def get_tls_session_secrets(session, tls_version):
+def get_tls_session_secrets(docker_client, session, openssl_client_version, tls_version):
     """Donne les secrets d'une session TLS.
 
     Args:
+        docker_client: Client Docker.
         session: Exit code et sortie standard de l'exécution de la session TLS.
+        openssl_client_version: Version OpenSSL du client sans les points.
         tls_version: Version TLS de utilisée.
 
     Returns:
-        Session-ID et Master-Key d'une session TLS.
+        Secrets d'une session TLS avec le bon format.
     """
-    session_id = "None"
-    master_key = "None"
+    formatted_tls_secrets = "None"
 
     if tls_session_passed(session):
         if tls_version == "1_3":
-            session_id = "TBD"
-            master_key = "TBD"
+            if "111" in openssl_client_version:
+                container = docker_client.containers.get("client-" + openssl_client_version)
+                res = container.exec_run(cmd="cat tls.secrets")
+                formatted_tls_secrets = res.output.decode("utf-8")
+                container.exec_run(cmd="rm tls.secrets")
         else:
             logs = session[1]
+            session_id = ""
+            master_key = ""
             for line in logs.split("\n"):
                 if "Session-ID:" in line:
                     session_id = line.replace(" ", "").split(":")[1]
                 elif "Master-Key:" in line:
                     master_key = line.replace(" ", "").split(":")[1]
+                formatted_tls_secrets = "RSA Session-ID:" + session_id + " Master-Key:" + master_key + "\n"
 
-    return session_id, master_key
+    return formatted_tls_secrets
 
 
 def write_tls_session_secrets(tls_secrets, openssl_client_version, openssl_server_version, tls_version, cipher):
     """Ecrit les secrets d'une session TLS avec le bon format dans un fichier.
 
     Args:
-        tls_secrets: Session-ID et Master-Key d'une session TLS.
+        tls_secrets: Secrets d'une session TLS avec le bon format.
         openssl_client_version: Version OpenSSL du client sans les points.
         openssl_server_version: Version OpensSSL du serveur sans les points.
         tls_version: Version TLS de utilisée.
@@ -193,19 +204,12 @@ def write_tls_session_secrets(tls_secrets, openssl_client_version, openssl_serve
     """
     path = "results/client_" + openssl_client_version + "/server_" + openssl_server_version + "/tls" + tls_version + "/"
     filename = cipher + ".secrets"
-    session_id = tls_secrets[0]
-    master_key = tls_secrets[1]
-
-    if tls_version == "1_3":
-        content = "TBD"
-    else:
-        content = "RSA Session-ID:" + session_id + " Master-Key:" + master_key + "\n"
 
     if not os.path.exists(path):
         os.makedirs(path)
 
     f = open(path + filename, "w+")
-    f.write(content)
+    f.write(tls_secrets)
 
     return None
 
@@ -224,7 +228,7 @@ def main():
                     session = exec_tls_session(docker_client, c, s, tls_version, cipher)
                     write_tls_session_logs(session, c, s, tls_version, cipher)
                     if tls_session_passed(session):
-                        tls_secrets = get_tls_session_secrets(session, tls_version)
+                        tls_secrets = get_tls_session_secrets(docker_client, session, c, tls_version)
                         write_tls_session_secrets(tls_secrets, c, s, tls_version, cipher)
                     print("[" + bcolors.OKGREEN + "DONE" + bcolors.ENDC + "] Client " + c + " | Server " + s + " | TLS " + tls_version + " | " + cipher)
 

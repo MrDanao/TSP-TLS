@@ -4,7 +4,6 @@ verify error:num=18:self signed certificate
 verify return:1
 depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
 verify return:1
-DONE
 ---
 Certificate chain
  0 s:/C=AU/ST=Some-State/O=Internet Widgits Pty Ltd
@@ -49,27 +48,28 @@ No ALPN negotiated
 SSL-Session:
     Protocol  : TLSv1
     Cipher    : ECDHE-RSA-AES256-SHA
-    Session-ID: 185AAC9CBBD2CEFAC329FCC2DD1DCC6822FF9CDE2328515A020E735B8538CB00
+    Session-ID: 1C5D8C04D762B597C7BAA225EE01B391C6965791F48B927725EDD0F92647EF6B
     Session-ID-ctx: 
-    Master-Key: 40BFB2E1091B59E305C0E8936C18FEE5881825CBB70C46773E90154B3A450CEEAC1D3AAF89C63945861ADDD5C1ADA3B4
+    Master-Key: 760141F30B8BE7D5B66267B866ADA379BEFB2567AF5FB6851BFCA29275F4F6C3462A6D7F660620F87A3EE7F97A1F1417
     Key-Arg   : None
     PSK identity: None
     PSK identity hint: None
     SRP username: None
     TLS session ticket lifetime hint: 7200 (seconds)
     TLS session ticket:
-    0000 - d0 3d d3 be 45 b4 0f ab-fd fd da 08 c1 cc f2 f9   .=..E...........
-    0010 - e0 7a f3 57 43 e3 45 4e-83 93 0b c1 a2 19 74 fe   .z.WC.EN......t.
-    0020 - 17 91 73 0f 58 73 29 c5-b6 3e 63 78 85 44 6b 60   ..s.Xs)..>cx.Dk`
-    0030 - c1 49 fa 58 cc 08 fd 5f-4f 0d de 4f a8 5d 2c 42   .I.X..._O..O.],B
-    0040 - 12 6a aa 87 ac ee 99 90-f3 d5 0d c1 68 9c 6c 8d   .j..........h.l.
-    0050 - c5 0a 70 8e b2 dc 22 74-10 e8 fb a9 81 f7 ad 80   ..p..."t........
-    0060 - 84 23 88 54 a0 a1 78 02-95 6d 64 73 c0 59 b1 ed   .#.T..x..mds.Y..
-    0070 - 2f 05 82 8a 56 43 ff 74-f8 b6 33 72 66 63 8c 09   /...VC.t..3rfc..
-    0080 - 44 8c ca b5 b3 de 19 9e-1b 49 ff 6b c8 ed aa b6   D........I.k....
-    0090 - 09 41 bc b2 78 ec 69 f9-66 8f 02 b6 19 8e 1f ed   .A..x.i.f.......
+    0000 - 3a 97 6d 5d b7 ca c5 7b-5f 5f 8d f3 f2 2c 2c dc   :.m]...{__...,,.
+    0010 - b4 f3 c1 c4 40 04 92 c4-18 9d b5 28 af 5b 95 d7   ....@......(.[..
+    0020 - 31 2e 9e a0 6d 70 72 d3-7f 72 80 05 3e 10 de b1   1...mpr..r..>...
+    0030 - 8c f9 84 22 80 14 2e cd-c1 05 dc ef 9c b4 c2 5d   ..."...........]
+    0040 - 14 a6 e2 7a e8 dc 21 dd-e7 19 f6 2d 76 30 e3 e0   ...z..!....-v0..
+    0050 - b9 8c a2 2e ec 52 22 4a-84 f1 0a 4f fb 37 a1 40   .....R"J...O.7.@
+    0060 - 9c 5d d8 c2 29 f0 83 a9-79 ca 12 26 b7 6c 84 71   .]..)...y..&.l.q
+    0070 - 52 b4 bc 4e fa a7 ea 69-9e 73 25 64 d9 34 7e 42   R..N...i.s%d.4~B
+    0080 - 3a 3a 6a 68 60 b9 ae a2-61 d4 9a 50 74 4b cd 03   ::jh`...a..PtK..
+    0090 - 1f aa f3 2c 64 c8 92 24-c6 2c 30 41 8a 2c af 18   ...,d..$.,0A.,..
 
-    Start Time: 1578439097
+    Start Time: 1578441791
     Timeout   : 7200 (sec)
     Verify return code: 18 (self signed certificate)
 ---
+DONE

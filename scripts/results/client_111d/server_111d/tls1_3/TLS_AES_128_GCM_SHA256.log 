@@ -1,4 +1,4 @@
-CONNECTED(00000003)
+CONNECTED(00000004)
 Can't use SSL_get_servername
 depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
 verify error:num=18:self signed certificate
