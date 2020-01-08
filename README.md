@@ -6,6 +6,7 @@
 - docker-compose
 - python3
 - virtualenv
+- wireshark >= 3.2.0
 
 ## Quelques détails
 
@@ -69,7 +70,11 @@ Dans le dossier `scripts/`.
 
 Le script Python `main.py` permet d'établir des sessions TLS vers tous les serveurs OpenSSL depuis chaque client OpenSSL, pour chaque version de TLS et ciphers supportés.
 
-Pour le moment ce script récupère seulement la sortie standard des clients et les écrit dans le dossier `results/`.
+Le script fournit pour chaque session dans le dossier `results` :
+- logs de session
+- fichier de capture de trames
+- fichier de capture de trames déchiffrée si la session a été correctement établie
+- secrets TLS si la session a été correctement établie
 
 ```
 $ cd scripts/
@@ -77,7 +82,15 @@ $ virtualenv -p python3 ~/.venv/tsp-tls
 $ source ~/.venv/tsp-tls/bin/activate
 $ pip install -r requirements.txt
 $ chmod +x main.py
+# debut : donner les droits de capture avec scapy pour python et tcpdump
+$ which python3
+~/.venv/tsp-tls/bin/python3
+$ sudo setcap cap_net_raw=eip ~/.venv/tsp-tls/bin/python3
+$ which tcpdump
+/usr/sbin/tcpdump
+$ sudo setcap cap_net_raw=eip /usr/sbin/tcpdump
+# fin : donner les droits de capture avec scapy pour python et tcpdump
 $ ./main.py
 ```
 
-:satisfied: :hand: A revoir : la commande `docker exec -it ...` semble donner davantage de logs (session TLS pas totalement établie à l'aide de Python?)...
+RAF : le script récupère les données au format brut, il faut désormais les mettre dans une base de données pour la future page Web :)

@@ -1,0 +1,122 @@
+CONNECTED(00000004)
+Can't use SSL_get_servername
+depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
+verify error:num=18:self signed certificate
+verify return:1
+depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
+verify return:1
+---
+Certificate chain
+ 0 s:C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
+   i:C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIDazCCAlOgAwIBAgIUUWBj1DL0r1TRK/dHpKSOke8mNyowDQYJKoZIhvcNAQEL
+BQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM
+GEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0xOTEwMjUxNjE5MzFaFw0yMDEw
+MjQxNjE5MzFaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw
+HwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB
+AQUAA4IBDwAwggEKAoIBAQDIC3Wj6US5oUyyjcSP616loFW94MExGLh0Flr02LfO
+X2w0ZkDOGC1B/zHrJK4On+z8bwx/+L1hytq/aVytgUQWoGWZwQGuzU7ev+lKjcIW
+ai2Zeqk3RysFPNticj/qWomS+g2o2RFJ/oEtg6BdAsy49VZjS0BTPpdoBBb7sMOp
+S0GvGPY85uFG9QTD/4o4UOfvruSHeJHih3pRYvkqwpZ3Al9EJuCI5zDchBr21fa9
+0JNFecJb1HymDk/eN3FxDHf/ubdB/TMx8oauC5WVoA/cLZjfZa6r+Ibv6wGnZe9F
+GZocIDBGxyeLRbHTzN42/7L6mTn4br9VWzLEswj8glT3AgMBAAGjUzBRMB0GA1Ud
+DgQWBBSDg9456bq2D7ileJyJm3Dw1QE7eDAfBgNVHSMEGDAWgBSDg9456bq2D7il
+eJyJm3Dw1QE7eDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQBp
+htY9dAYDr3+yewxDbenTzcPuD4nS1x11NNfKHNY/Ju6fQa2/cNzgHu3oOaGlQRQ4
+Ob3wgkk7sK6YuyKR5YllT9vOGqBw/Ha9x7cdRaP4gKEnxrMIdxEIWJifz72TF7xI
+SId9FHVKy9awaunIGJelJ+v2J4ZHkUk2vHLjR57SQdv+ENuMeQZX34PwvcLvXhRj
+joX7tBBYYoB/haFlW9WMHM7HyYryMAirxnF3ltXWley0vnLXlkFLRSp4xzr0ERZW
+1vXmmTv+c+yXzTo03A4BcEBZg0gN4FjM3lKJjiC9M6hJ8oVIJ+40MoKTgNjaupb7
+vXxBDJcqvz+HMrruHXw3
+-----END CERTIFICATE-----
+subject=C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
+
+issuer=C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
+
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: RSA-PSS
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 1435 bytes and written 291 bytes
+Verification error: self signed certificate
+---
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+Server public key is 2048 bit
+Secure Renegotiation IS NOT supported
+No ALPN negotiated
+Early data was not sent
+Verify return code: 18 (self signed certificate)
+---
+---
+Post-Handshake New Session Ticket arrived:
+SSL-Session:
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_256_GCM_SHA384
+    Session-ID: 08FAFC6400176A4002DC2F08209230777041D00B5DD170D08794F8F31D8437BB
+    Session-ID-ctx: 
+    Resumption PSK: C4F24BEA1E5BC5C7E78BE249472BE75C9A1171A6C5B020470A56B558531CA60DE8163CCDBC3FDE230444A1CCD05A02B4
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 7200 (seconds)
+    TLS session ticket:
+    0000 - 0d 97 f8 af a4 7d 1d 93-9d 89 6e 2c 2c c2 c0 20   .....}....n,,.. 
+    0010 - f9 76 72 30 fd 89 ce 56-b6 5d 1a 73 4f aa e0 8b   .vr0...V.].sO...
+    0020 - ec bb fd 53 da 8b b5 ba-4d 11 07 20 2b 01 8d 02   ...S....M.. +...
+    0030 - 51 51 1b 06 7e 5e 1f bb-52 d4 5b 93 95 57 8f ef   QQ..~^..R.[..W..
+    0040 - f5 4e 9f 62 d0 a8 c4 8b-5e 6f 9b 43 f8 08 02 a0   .N.b....^o.C....
+    0050 - fd c7 f9 2f fa e4 4b 70-b6 f1 16 88 96 da 28 63   .../..Kp......(c
+    0060 - bf 03 8f 81 22 19 c7 37-81 40 3c 32 c0 70 f2 1d   ...."..7.@<2.p..
+    0070 - 20 ba ce 62 b8 a0 86 c5-da 2c a9 bc 9f db 89 c8    ..b.....,......
+    0080 - 67 64 8d 72 3d b2 22 05-ae d6 f6 7c f8 8d 14 3f   gd.r=."....|...?
+    0090 - 49 d4 3d 3d e9 ec 2d 33-5b 03 c1 80 2c 65 7e ff   I.==..-3[...,e~.
+    00a0 - ae 31 20 10 ea 41 16 49-4b e9 66 e0 06 22 60 cd   .1 ..A.IK.f.."`.
+    00b0 - 0a 2c 4e 4f 55 9b c5 1d-b5 8b 65 9f 39 a0 f0 46   .,NOU.....e.9..F
+    00c0 - 1f 8c 86 6c 49 f6 68 bd-31 4b 7b ae ff 60 6f bf   ...lI.h.1K{..`o.
+
+    Start Time: 1578517778
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self signed certificate)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
+---
+Post-Handshake New Session Ticket arrived:
+SSL-Session:
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_256_GCM_SHA384
+    Session-ID: DA758478CEBA618073B8D57D819DB316B753C33543B9F062CA68A82D9B9CFB12
+    Session-ID-ctx: 
+    Resumption PSK: 904C88D143F77AE397A5FF42DE2BD6C58EDABD1F55611833510131264959BFEB5B01DFB612E206AB496B3182849378C4
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 7200 (seconds)
+    TLS session ticket:
+    0000 - 0d 97 f8 af a4 7d 1d 93-9d 89 6e 2c 2c c2 c0 20   .....}....n,,.. 
+    0010 - 96 c0 c4 69 d1 5e 62 bd-49 fc 38 19 d4 39 74 1a   ...i.^b.I.8..9t.
+    0020 - 23 ad c9 bb b0 40 1a 88-43 39 44 c5 78 58 48 b5   #....@..C9D.xXH.
+    0030 - c6 7e a1 21 e6 fe 70 97-8c 69 d7 07 c4 9e 1e 33   .~.!..p..i.....3
+    0040 - 3a 15 22 dd e8 f6 89 61-e4 15 60 e0 e9 7a 20 ef   :."....a..`..z .
+    0050 - 9a e5 9b ae b4 37 e3 be-90 43 fa 4a a8 9b 05 1d   .....7...C.J....
+    0060 - 8e 09 db 80 3b a3 e5 db-a5 b8 98 29 db 1e e4 8b   ....;......)....
+    0070 - c6 e6 6d 04 82 6b e0 3c-8c c9 1d 0f 57 2c d4 d9   ..m..k.<....W,..
+    0080 - e2 54 9c 9c 1b 13 99 a0-ea 66 52 e6 20 34 74 a4   .T.......fR. 4t.
+    0090 - b7 fd 3d b0 92 05 f2 dd-3c 30 f6 94 64 d7 4b 34   ..=.....<0..d.K4
+    00a0 - 69 7b 08 3e c2 c2 b7 28-a4 db b9 6d 5b a8 ed 90   i{.>...(...m[...
+    00b0 - d1 ac 9a e4 4b 5b c3 f9-08 7a a2 51 6d ae ec 9d   ....K[...z.Qm...
+DONE
+
+    Start Time: 1578517778
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self signed certificate)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
