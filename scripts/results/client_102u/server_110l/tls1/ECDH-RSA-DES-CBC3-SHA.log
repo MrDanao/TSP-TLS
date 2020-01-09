@@ -1,6 +1,4 @@
 CONNECTED(00000003)
-140091093990348:error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure:s3_pkt.c:1498:SSL alert number 40
-140091093990348:error:1409E0E5:SSL routines:ssl3_write_bytes:ssl handshake failure:s3_pkt.c:659:
 ---
 no peer certificate available
 ---
@@ -23,7 +21,9 @@ SSL-Session:
     PSK identity: None
     PSK identity hint: None
     SRP username: None
-    Start Time: 1578577765
+    Start Time: 1578582405
     Timeout   : 7200 (sec)
     Verify return code: 0 (ok)
 ---
+140666714561484:error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure:s3_pkt.c:1498:SSL alert number 40
+140666714561484:error:1409E0E5:SSL routines:ssl3_write_bytes:ssl handshake failure:s3_pkt.c:659:

@@ -1,10 +1,10 @@
+CONNECTED(00000004)
 Can't use SSL_get_servername
 depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
 verify error:num=18:self signed certificate
 verify return:1
 depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
 verify return:1
-CONNECTED(00000004)
 ---
 Certificate chain
  0 s:C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
@@ -57,28 +57,28 @@ Post-Handshake New Session Ticket arrived:
 SSL-Session:
     Protocol  : TLSv1.3
     Cipher    : TLS_AES_256_GCM_SHA384
-    Session-ID: E47BEE9F402B6F379B7DFB1CD34AA0D42114F1030C1E106AF3DCD49E00344660
+    Session-ID: 45A06DD7418AE9254206CD5B7FB66A30FCCDB9C5FAF86ED301617923D6009968
     Session-ID-ctx: 
-    Resumption PSK: E2B6D29B50BECF1BF78BD6DA7056A41C3FC49198063984A74A577292BB6C7D747E8BD1B831A23E3D2737D824282C3B59
+    Resumption PSK: 8ED9A7D3765729ECFA1AE09250FFB7E066E1B86BAE7A5B2E95BACE2092E3B7F44180F435EA28EFBA209BD089B8F52F51
     PSK identity: None
     PSK identity hint: None
     SRP username: None
     TLS session ticket lifetime hint: 7200 (seconds)
     TLS session ticket:
-    0000 - cc 2c 36 01 5f bb 52 6d-50 0a 1f 2a 61 19 07 cb   .,6._.RmP..*a...
-    0010 - c6 7d 67 1a ce 3e 2a 6b-f7 97 bc 74 3f e9 74 5a   .}g..>*k...t?.tZ
-    0020 - 3f bb e0 c6 33 28 dc df-aa 05 02 22 b6 61 01 ba   ?...3(.....".a..
-    0030 - 3b db bf 05 45 78 3c 35-00 dd b5 f7 4c a9 28 30   ;...Ex<5....L.(0
-    0040 - 73 c6 39 98 8a 1a a9 17-fa a3 02 17 75 7f d5 14   s.9.........u...
-    0050 - c9 44 34 b4 c0 71 e4 4b-49 af 2d 7f 74 86 00 3f   .D4..q.KI.-.t..?
-    0060 - 02 f6 05 58 2e 12 28 c6-e4 4e 11 ca 2d 23 0a d6   ...X..(..N..-#..
-    0070 - 8c 21 60 d3 83 a0 f7 90-22 e8 fc b6 31 5a ac 9d   .!`....."...1Z..
-    0080 - dc 32 aa 3f 3a 35 ef 97-51 12 2c 78 3b bf 7f 89   .2.?:5..Q.,x;...
-    0090 - 73 6c 49 d1 d4 24 57 b1-84 eb 04 e0 4a f5 56 29   slI..$W.....J.V)
-    00a0 - 9f 45 de e6 b0 78 81 6d-f3 dd 61 bf 37 04 43 17   .E...x.m..a.7.C.
-    00b0 - 8b 17 57 67 4d 74 19 7e-df 4e a2 5f 6b 23 1c 66   ..WgMt.~.N._k#.f
+    0000 - ee 46 3f ab 5e fa 9c 32-23 49 60 fd 5d a5 39 a2   .F?.^..2#I`.].9.
+    0010 - 1d 53 25 1f f5 d7 4f 3a-a5 4c 31 51 59 ae da 4b   .S%...O:.L1QY..K
+    0020 - 07 63 02 79 aa 56 20 53-f6 67 f1 49 6e ff 00 67   .c.y.V S.g.In..g
+    0030 - 91 15 48 4b ee fb 81 df-d9 a4 fd 50 dd 60 00 30   ..HK.......P.`.0
+    0040 - 9e 02 6d 88 c0 e8 55 5f-63 9c 4b 63 63 13 63 ba   ..m...U_c.Kcc.c.
+    0050 - 9c 7e 4f e8 2a b2 12 22-2d a8 ed 70 25 d2 65 d2   .~O.*.."-..p%.e.
+    0060 - b9 f9 2b d0 2e 36 4c f1-91 3e 65 28 cb 2b 64 96   ..+..6L..>e(.+d.
+    0070 - 56 d2 b3 1d 48 46 9f 42-f1 6f be ed b1 86 b2 66   V...HF.B.o.....f
+    0080 - cc e2 5c 64 83 ed e2 34-ee 79 dd 2f d5 26 95 fd   ..\d...4.y./.&..
+    0090 - 1a a1 be ab 5e 5e 35 22-85 e0 ce 98 f6 f0 b6 9c   ....^^5"........
+    00a0 - 7a bc 83 20 e6 36 3b 1c-85 6d 62 7b 31 e2 f9 b3   z.. .6;..mb{1...
+    00b0 - 07 25 1b f1 20 c2 d6 a3-58 97 d5 23 ae ed 6e 2c   .%.. ...X..#..n,
 
-    Start Time: 1578577888
+    Start Time: 1578582533
     Timeout   : 7200 (sec)
     Verify return code: 18 (self signed certificate)
     Extended master secret: no
@@ -90,32 +90,31 @@ Post-Handshake New Session Ticket arrived:
 SSL-Session:
     Protocol  : TLSv1.3
     Cipher    : TLS_AES_256_GCM_SHA384
-    Session-ID: 16C7F36D90960C8168835C97761C019C44A39E6D0AC809BAEEE98AE338143AD3
+    Session-ID: 0EC7882B4B6E2C1C0E8CC2D42C005DB2AA6A52E9A51D4C4FB588F346995E3854
     Session-ID-ctx: 
-    Resumption PSK: 781675443B678D9BAD77367C557135F35D6898FB0429A90D7317F451AF177804970113791A14DE1AE9C00DE9F901FA36
+    Resumption PSK: A48EC81A3F80DD548F4434CFC188DB1007D6D80EB1A207AA2985AFEEDAB97406987BBDD30F6F46813B33DE8DF235E5DA
     PSK identity: None
     PSK identity hint: None
     SRP username: None
     TLS session ticket lifetime hint: 7200 (seconds)
     TLS session ticket:
-    0000 - cc 2c 36 01 5f bb 52 6d-50 0a 1f 2a 61 19 07 cb   .,6._.RmP..*a...
-    0010 - 28 85 bd 93 fd fe 03 57-a4 02 6f 9e 4a d5 0e 19   (......W..o.J...
-    0020 - 37 d3 83 2e a3 d5 88 9b-d4 29 3f 34 0d f8 d8 3f   7........)?4...?
-    0030 - b8 e2 0d 68 de 27 7b ef-21 e8 77 77 d3 a5 95 d0   ...h.'{.!.ww....
-    0040 - 40 50 38 60 ba cf 47 03-50 7c e3 f1 b1 a0 b7 11   @P8`..G.P|......
-    0050 - d2 84 53 6c 92 03 3a 89-d3 67 e3 26 99 86 e0 26   ..Sl..:..g.&...&
-    0060 - b9 fe 8c cb fb d7 0c b7-61 36 0d f3 50 b2 f5 79   ........a6..P..y
-    0070 - 1a 5a c7 62 bf 43 28 d7-d8 88 df df ac 68 d6 d5   .Z.b.C(......h..
-    0080 - 87 00 67 63 33 b0 05 61-85 48 2b a2 88 4e 9e 55   ..gc3..a.H+..N.U
-    0090 - 93 a9 8f 0f 17 16 96 d4-82 36 df 50 3c f3 98 d2   .........6.P<...
-    00a0 - fc f1 06 0a ab 46 7d 3a-3f 2d 4d 09 a7 ce a4 46   .....F}:?-M....F
-    00b0 - a9 b4 f6 b7 d5 65 79 0b-cd fb 47 37 e5 a4 96 b2   .....ey...G7....
-    00c0 - c7 d9 6b ec 7b 02 67 07-b9 25 e1 4c 19 73 35 bc   ..k.{.g..%.L.s5.
-DONE
+    0000 - ee 46 3f ab 5e fa 9c 32-23 49 60 fd 5d a5 39 a2   .F?.^..2#I`.].9.
+    0010 - 4b 1d a7 e6 24 94 01 10-4d b5 d4 59 6c 5c f9 6e   K...$...M..Yl\.n
+    0020 - d3 8e 32 ea a0 ee 68 97-59 52 ba ed ab b7 81 d4   ..2...h.YR......
+    0030 - 34 78 a9 e6 c8 7d 75 74-97 ac 48 a8 85 66 6e 22   4x...}ut..H..fn"
+    0040 - 03 f3 36 f1 64 eb a5 e1-75 e4 c0 b5 77 fb 19 ef   ..6.d...u...w...
+    0050 - 8e 4c 2e 25 81 6e 6f 6f-cf 03 b7 50 e0 d5 9c d6   .L.%.noo...P....
+    0060 - 3e ce 08 b9 46 33 69 57-bc 79 e7 ac 68 73 dc 3f   >...F3iW.y..hs.?
+    0070 - 17 cf bc 8f 78 76 ac e2-80 86 6e eb 22 8f df 91   ....xv....n."...
+    0080 - 0e f1 42 11 6c 0e 32 03-92 83 56 63 38 50 d6 fe   ..B.l.2...Vc8P..
+    0090 - 83 23 67 24 55 e8 d6 df-1c b0 b0 46 be ee 81 cf   .#g$U......F....
+    00a0 - 44 f5 7e 54 96 af ed 10-b3 25 f4 2a 2a 49 6d a9   D.~T.....%.**Im.
+    00b0 - 68 8e 2a c3 1e 29 c6 9a-a7 05 89 0f 7c c7 b3 fb   h.*..)......|...
 
-    Start Time: 1578577888
+    Start Time: 1578582533
     Timeout   : 7200 (sec)
-    Verify return code: 18 (self signed certificate)
+    Verify return code: DONE
+18 (self signed certificate)
     Extended master secret: no
     Max Early Data: 0
 ---

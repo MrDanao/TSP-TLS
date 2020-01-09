@@ -19,9 +19,9 @@ SSL-Session:
     PSK identity: None
     PSK identity hint: None
     SRP username: None
-    Start Time: 1578577857
+    Start Time: 1578582500
     Timeout   : 7200 (sec)
     Verify return code: 0 (ok)
     Extended master secret: no
 ---
-139894006402376:error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure:ssl/record/rec_layer_s3.c:1543:SSL alert number 40
+140073648196936:error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure:ssl/record/rec_layer_s3.c:1543:SSL alert number 40

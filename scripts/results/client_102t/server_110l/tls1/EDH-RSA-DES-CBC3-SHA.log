@@ -21,9 +21,9 @@ SSL-Session:
     PSK identity: None
     PSK identity hint: None
     SRP username: None
-    Start Time: 1578577634
+    Start Time: 1578582269
     Timeout   : 7200 (sec)
     Verify return code: 0 (ok)
 ---
-140305172380620:error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure:s3_pkt.c:1498:SSL alert number 40
-140305172380620:error:1409E0E5:SSL routines:ssl3_write_bytes:ssl handshake failure:s3_pkt.c:659:
+140554186689484:error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure:s3_pkt.c:1498:SSL alert number 40
+140554186689484:error:1409E0E5:SSL routines:ssl3_write_bytes:ssl handshake failure:s3_pkt.c:659:

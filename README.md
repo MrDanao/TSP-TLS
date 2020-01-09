@@ -76,8 +76,12 @@ Le script fournit pour chaque session dans le dossier `results` :
 - fichier de capture de trames déchiffrée si la session a été correctement établie
 - secrets TLS si la session a été correctement établie
 
+Les données de chaque session sont insérées dans une base de données MySQL. Un extract est présent dans `sql_server/dump/data.sql`. Au lancement du container `sql-server`, `data.sql` est importé.
+
 ```
-$ cd scripts/
+$ cd scripts/sql_server
+$ docker-compose up -d
+$ cd ..
 $ virtualenv -p python3 ~/.venv/tsp-tls
 $ source ~/.venv/tsp-tls/bin/activate
 $ pip install -r requirements.txt
@@ -92,5 +96,3 @@ $ sudo setcap cap_net_raw=eip /usr/sbin/tcpdump
 # fin : donner les droits de capture avec scapy pour python et tcpdump
 $ ./main.py
 ```
-
-RAF : le script récupère les données au format brut, il faut désormais les mettre dans une base de données pour la future page Web :)

@@ -11,7 +11,7 @@ services:
     expose:
       - 3306
     volumes:
-      - ./db:/var/lib/mysql
+      - ./dump:/docker-entrypoint-initdb.d
     command: --default-authentication-plugin=mysql_native_password
     env_file: ./.env
 

@@ -353,6 +353,9 @@ def populate_db(db, cursor, openssl_client_version, openssl_server_version, tls_
     base_path = "results/client_" + openssl_client_version + "/server_" + openssl_server_version + "/tls" + tls_version + "/" + cipher
     log_path = base_path + ".log"
     original_capture_path = base_path + ".pcap"
+    openssl_client_version = ".".join(openssl_client_version[:-1]) + openssl_client_version[-1:]
+    openssl_server_version = ".".join(openssl_server_version[:-1]) + openssl_server_version[-1:]
+    tls_version = tls_version.replace("_", ".")
 
     if result:
         decrypted_capture_path = base_path + "_decrypted.pcap"
