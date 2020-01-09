@@ -1,3 +1,8 @@
+depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
+verify error:num=18:self signed certificate
+verify return:1
+depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
+verify return:1
 CONNECTED(00000003)
 ---
 Certificate chain
@@ -43,33 +48,28 @@ No ALPN negotiated
 SSL-Session:
     Protocol  : TLSv1.1
     Cipher    : AES128-SHA
-    Session-ID: 4B3AA4D4C16812F102169797C527F707F9DD6F561329F309CDEC6809C542D234
+    Session-ID: 8CE1834BE6B6518425456069E7282E1311FBD65F51F5D612226A0BE071FFE506
     Session-ID-ctx: 
-    Master-Key: 888601159A2959B974049CB402693A85AD10FC8197F1F5000A7453442F1FE6C7789100F7EE04E9566125BCFAC22302CA
+    Master-Key: FB8069DFE441417D40358034F5761570B2D478665DDC5A32CAC9CE0D0404A5284C702511FE947143F946E471975C60EA
     PSK identity: None
     PSK identity hint: None
     SRP username: None
     TLS session ticket lifetime hint: 7200 (seconds)
     TLS session ticket:
-    0000 - 8b 9a dd 6a ca 0e 88 61-bf f0 4f 2b 4d b0 79 2b   ...j...a..O+M.y+
-    0010 - 2e 30 ef 67 22 e5 69 2a-2f ba d3 57 90 c2 3f 8f   .0.g".i*/..W..?.
-    0020 - 71 6e cf 49 6a 38 bb ea-46 f3 1f 75 59 5b c3 a8   qn.Ij8..F..uY[..
-    0030 - 54 ba 29 fa 59 af 80 52-95 c5 9a 92 dc 19 10 eb   T.).Y..R........
-    0040 - fc 65 1a 71 8f 65 8c aa-d6 3a e3 3f aa 1e fd 44   .e.q.e...:.?...D
-    0050 - 4f 70 8b 17 e6 24 fa 44-32 d1 9e 07 d2 63 91 b5   Op...$.D2....c..
-    0060 - 2b 79 8a 6a ed 8c c2 d6-e8 ca 99 7e 61 6e 0a 27   +y.j.......~an.'
-    0070 - 83 80 14 1d 93 ef b7 4f-34 75 66 86 e2 d5 41 41   .......O4uf...AA
-    0080 - c8 97 89 fd 0a 96 6b 72-41 66 af e3 ed c7 19 c7   ......krAf......
-    0090 - d9 2b fc 49 ee c0 bb 92-20 cd eb 23 4f 2c 51 fb   .+.I.... ..#O,Q.
+    0000 - 14 cd 99 20 55 b2 ec c0-86 7e 0a 5b e0 6e 5f f6   ... U....~.[.n_.
+    0010 - 93 a3 68 6f 12 63 b4 5c-f9 f6 1f f9 fc a3 b9 57   ..ho.c.\.......W
+    0020 - f2 e3 3a ca a7 2f 7f 99-76 84 f7 ed 81 49 76 f8   ..:../..v....Iv.
+    0030 - 13 9e 36 7d e0 72 88 df-2b d4 a0 e2 0e 24 90 2c   ..6}.r..+....$.,
+    0040 - 61 83 e0 8a 6a a6 dd b0-28 76 4e b8 5e 2f 8f 2c   a...j...(vN.^/.,
+    0050 - b8 99 6c 27 3e 54 3b 9e-4e 89 7c c6 a1 c9 ee 3b   ..l'>T;.N.|....;
+    0060 - f6 00 d6 9f ea dd b4 91-08 2a 12 f1 73 99 21 a3   .........*..s.!.
+    0070 - 1f 44 5b fe 0d 02 b8 f4-73 84 77 d7 fd fc e9 f0   .D[.....s.w.....
+    0080 - 9d c1 e8 b0 a6 9c dc e5-c6 b6 d8 b1 d0 07 c2 8b   ................
+    0090 - 22 e8 31 36 6b ce f5 28-d2 7d 9a e9 d4 2c 11 54   ".16k..(.}...,.T
 
-    Start Time: 1578517672
+    Start Time: 1578577790
     Timeout   : 7200 (sec)
     Verify return code: 18 (self signed certificate)
     Extended master secret: yes
 ---
-depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
-verify error:num=18:self signed certificate
-verify return:1
-depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
-verify return:1
 DONE

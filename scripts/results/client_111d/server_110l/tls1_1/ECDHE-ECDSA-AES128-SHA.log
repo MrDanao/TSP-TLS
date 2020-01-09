@@ -1,5 +1,5 @@
 CONNECTED(00000003)
-140346539068744:error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure:ssl/record/rec_layer_s3.c:1543:SSL alert number 40
+139844674432328:error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure:ssl/record/rec_layer_s3.c:1543:SSL alert number 40
 ---
 no peer certificate available
 ---
@@ -20,7 +20,7 @@ SSL-Session:
     PSK identity: None
     PSK identity hint: None
     SRP username: None
-    Start Time: 1578517730
+    Start Time: 1578577844
     Timeout   : 7200 (sec)
     Verify return code: 0 (ok)
     Extended master secret: no

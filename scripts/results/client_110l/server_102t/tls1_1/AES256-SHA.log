@@ -3,7 +3,6 @@ verify error:num=18:self signed certificate
 verify return:1
 depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
 verify return:1
-DONE
 CONNECTED(00000003)
 ---
 Certificate chain
@@ -49,27 +48,28 @@ No ALPN negotiated
 SSL-Session:
     Protocol  : TLSv1.1
     Cipher    : AES256-SHA
-    Session-ID: BB15BB48648E91CA3788766796C343F3DD8D96F46C218B4C07295E15D5D44557
+    Session-ID: D382171F8500AB1CA777AA8EE1EE9715FCFD99A50CDB2641D9637155AA76A605
     Session-ID-ctx: 
-    Master-Key: 9FE86D4132E8FDAFE6037F6399B1DD75D0AF35A9BFD2E383D0E8369B847B7098481D79577CD9B8BC9921E2997E0080A5
+    Master-Key: C53D475728177FEE847AB0D328C89858C025B701F34AC2F8B6A171F001F5809A29EE2C8F67C5F377BE7AD037BCF3D839
     PSK identity: None
     PSK identity hint: None
     SRP username: None
     TLS session ticket lifetime hint: 300 (seconds)
     TLS session ticket:
-    0000 - 78 cf 2b 20 35 f6 a9 ad-72 b3 52 59 53 4e 8a f9   x.+ 5...r.RYSN..
-    0010 - fd e5 72 4d 00 c3 1e 3f-ba 57 f2 01 d4 c1 23 7e   ..rM...?.W....#~
-    0020 - a6 0f 50 00 6d 4f 92 24-0d 4b 93 ee 0c c0 68 a0   ..P.mO.$.K....h.
-    0030 - ed b4 99 b7 19 97 6d 2e-49 46 02 bd 01 e6 75 88   ......m.IF....u.
-    0040 - 6c 49 3a 36 14 41 d7 d5-f9 35 7f e2 12 01 df 6a   lI:6.A...5.....j
-    0050 - 83 a2 f8 50 f3 e8 27 c2-4c c2 cd 1c 51 62 47 be   ...P..'.L...QbG.
-    0060 - 74 ea 33 bd 7e e2 50 84-e9 33 a7 8a 50 88 91 6c   t.3.~.P..3..P..l
-    0070 - a6 a7 46 be 23 dd ef 31-6c ce 15 bc fb 07 02 c8   ..F.#..1l.......
-    0080 - 89 b2 00 f5 bf 13 ec 1f-dd 55 c0 61 58 5e db 02   .........U.aX^..
-    0090 - 00 40 08 50 77 6d a9 04-de 7d 12 ae a5 48 33 13   .@.Pwm...}...H3.
+    0000 - f9 42 2b 85 1f 36 a7 ab-27 fd 17 fa 8b 59 e3 5f   .B+..6..'....Y._
+    0010 - f8 4b 34 cd 70 3b 23 0d-14 2f 38 77 80 5c 87 62   .K4.p;#../8w.\.b
+    0020 - c0 0e e6 ad 0e ca 5c b8-04 85 0b 88 e4 74 61 a5   ......\......ta.
+    0030 - d5 db 46 c0 69 e3 67 5b-fd aa 63 d1 73 71 95 5b   ..F.i.g[..c.sq.[
+    0040 - ad 3f a0 5f 8e fd f4 60-b8 16 7d a2 a2 d2 54 28   .?._...`..}...T(
+    0050 - 06 83 89 d7 da e5 bf 6e-c2 9f c3 b8 f9 11 fa 4e   .......n.......N
+    0060 - 45 2c f7 31 8b 1f 48 5f-e2 46 a1 7d d6 32 b8 99   E,.1..H_.F.}.2..
+    0070 - 5b c2 79 31 9c 7e 17 bb-6c be 0e 17 2a cc 00 9b   [.y1.~..l...*...
+    0080 - f9 9b c2 ef aa a4 44 6a-43 15 d1 18 d8 24 80 02   ......DjC....$..
+    0090 - 9a dc 78 ad c2 66 44 35-d0 a4 20 83 8a f6 f6 f3   ..x..fD5.. .....
 
-    Start Time: 1578517670
+    Start Time: 1578577788
     Timeout   : 7200 (sec)
     Verify return code: 18 (self signed certificate)
     Extended master secret: no
 ---
+DONE

@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  mysql:
+    image: mysql
+    container_name: mysql-server
+    restart: always
+    networks:
+      - sql
+    expose:
+      - 3306
+    volumes:
+      - ./db:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    env_file: ./.env
+
+networks:
+  sql:

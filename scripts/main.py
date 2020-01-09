@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-import os
 import docker
+import mysql.connector
 from scapy.all import *
 from scapy.layers.tls.handshake import TLSClientHello
 from scapy.layers.tls.record import TLS
@@ -283,11 +283,103 @@ def decrypt_tls_packet_capture(openssl_client_version, openssl_server_version, t
     Returns:
         None
     """
-    secret_path = "results/client_" + openssl_client_version + "/server_" + openssl_server_version + "/tls" + tls_version + "/" + cipher + ".secrets"
-    original_capture_path = "results/client_" + openssl_client_version + "/server_" + openssl_server_version + "/tls" + tls_version + "/" + cipher + ".pcap"
-    decrypted_capture_path = "results/client_" + openssl_client_version + "/server_" + openssl_server_version + "/tls" + tls_version + "/" + cipher + "_decrypted.pcap"
-    cmd = "editcap --inject-secrets tls," + secret_path + " " + original_capture_path + " " + decrypted_capture_path
+    base_path = "results/client_" + openssl_client_version + "/server_" + openssl_server_version + "/tls" + tls_version + "/" + cipher
+    tls_secrets_path = base_path + ".secrets"
+    original_capture_path = base_path + ".pcap"
+    decrypted_capture_path = base_path + "_decrypted.pcap"
+    cmd = "editcap --inject-secrets tls," + tls_secrets_path + " " + original_capture_path + " " + decrypted_capture_path
     subprocess.Popen(cmd.split(), stdout=subprocess.PIPE)
+
+    return None
+
+
+def get_mysql_server_params(docker_client, container_name="mysql-server", container_network="sql_server_sql"):
+    """Donne l'adresse IP du container, le user, mot de passe et nom de la base de données MySQL Server.
+
+    Args:
+        docker_client: Client Docker.
+        container_name: Nom du container MySQL Server.
+        container_network: Nom du réseau auquel le container MySQL Server est attaché.
+
+    Returns:
+        Adresse IP du container, le user, mot de passe et nom de la base de données MySQL Server.
+    """
+    mysql = {}
+    container = docker_client.containers.get(container_name)
+    mysql['host'] = container.attrs['NetworkSettings']['Networks'][container_network]['IPAddress']
+    environment_variables = container.attrs['Config']['Env']
+
+    for env in environment_variables:
+        if "MYSQL_USER" in env:
+            mysql['user'] = env.split("=")[1]
+        elif "MYSQL_PASSWORD" in env:
+            mysql['passwd'] = env.split("=")[1]
+        elif "MYSQL_DATABASE" in env:
+            mysql['db'] = env.split("=")[1]
+
+    return mysql
+
+
+def init_db(cursor):
+    """Initialise la table sessions si pas existante.
+
+    Args:
+        cursor: Curseur MySQL Server
+
+    Returns:
+        None.
+    """
+    query = "CREATE TABLE IF NOT EXISTS sessions (id INT AUTO_INCREMENT PRIMARY KEY, openssl_client_version VARCHAR(255), openssl_server_version VARCHAR(255), tls_version VARCHAR(255), cipher VARCHAR(255), result BOOL, log VARCHAR(255), original_capture VARCHAR(255), decrypted_capture VARCHAR(255), tls_secrets VARCHAR(255))"
+    cursor.execute(query)
+
+    return None
+
+
+def populate_db(db, cursor, openssl_client_version, openssl_server_version, tls_version, cipher, result):
+    """Alimente de base de données avec les données de la session.
+
+    Args:
+        db: Base de données MySQL Server.
+        cursor: Curseur MySQL Server.
+        openssl_client_version: Version OpenSSL du client sans les points.
+        openssl_server_version: Version OpensSSL du serveur sans les points.
+        tls_version: Version TLS de utilisée.
+        cipher: Nom du cipher utilisé.
+        result: Résultat de la session.
+
+    Returns:
+        None.
+    """
+    base_path = "results/client_" + openssl_client_version + "/server_" + openssl_server_version + "/tls" + tls_version + "/" + cipher
+    log_path = base_path + ".log"
+    original_capture_path = base_path + ".pcap"
+
+    if result:
+        decrypted_capture_path = base_path + "_decrypted.pcap"
+        tls_secrets_path = base_path + ".secrets"
+    else:
+        decrypted_capture_path = ""
+        tls_secrets_path = ""
+
+    query = "SELECT id FROM sessions WHERE openssl_client_version=%s AND openssl_server_version=%s AND tls_version=%s AND cipher=%s"
+    val = (openssl_client_version, openssl_server_version, tls_version, cipher)
+    cursor.execute(query, val)
+    res = cursor.fetchall()
+    count = cursor.rowcount
+
+    # si session existe dans la table, alors mis à jour de la session
+    if count == 1:
+        id = str(res[0][0])
+        query = "UPDATE sessions SET result=%s, log=%s, original_capture=%s, decrypted_capture=%s, tls_secrets=%s WHERE id=%s"
+        val = (result, log_path, original_capture_path, decrypted_capture_path, tls_secrets_path, id)
+        cursor.execute(query, val)
+        db.commit()
+    # si session n'existe pas dans la table, alors création de la session
+    elif count == 0:
+        query = "INSERT INTO sessions (openssl_client_version, openssl_server_version, tls_version, cipher, result, log, original_capture, decrypted_capture, tls_secrets) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        val = (openssl_client_version, openssl_server_version, tls_version, cipher, result, log_path, original_capture_path, decrypted_capture_path, tls_secrets_path)
+        cursor.execute(query, val)
+        db.commit()
 
     return None
 
@@ -297,6 +389,11 @@ def main():
     openssl_versions = list_openssl_versions()
     docker_client = docker.from_env()
     network_interface = get_network_interface(docker_client)
+    db_params = get_mysql_server_params(docker_client)
+    db = mysql.connector.connect(host=db_params['host'], user=db_params['user'], passwd=db_params['passwd'], database=db_params['db'])
+    db_cursor = db.cursor()
+
+    init_db(db_cursor)
 
     for c in openssl_versions:
         tls_versions = get_tls_versions(c)
@@ -310,10 +407,12 @@ def main():
                     write_tls_session_logs(session, c, s, tls_version, cipher)
                     capture_results = capture.stop()
                     write_packet_capture(capture_results, c, s, tls_version, cipher)
-                    if tls_session_passed(session):
+                    session_result = tls_session_passed(session)
+                    if session_result:
                         tls_secrets = get_tls_session_secrets(docker_client, session, c, s, tls_version, cipher)
                         write_tls_session_secrets(tls_secrets, c, s, tls_version, cipher)
                         decrypt_tls_packet_capture(c, s, tls_version, cipher)
+                    populate_db(db, db_cursor, c, s, tls_version, cipher, session_result)
                     print("[" + bcolors.OKGREEN + "DONE" + bcolors.ENDC + "] Client " + c + " | Server " + s + " | TLS " + tls_version + " | " + cipher)
 
 

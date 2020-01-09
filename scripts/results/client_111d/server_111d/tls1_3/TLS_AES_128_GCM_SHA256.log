@@ -1,10 +1,11 @@
-Can't use SSL_get_servername
 CONNECTED(00000004)
+Can't use SSL_get_servername
 depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
 verify error:num=18:self signed certificate
 verify return:1
 depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
 verify return:1
+DONE
 ---
 Certificate chain
  0 s:C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
@@ -52,4 +53,3 @@ No ALPN negotiated
 Early data was not sent
 Verify return code: 18 (self signed certificate)
 ---
-DONE
