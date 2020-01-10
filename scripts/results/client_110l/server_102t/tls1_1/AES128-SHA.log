@@ -1,0 +1,75 @@
+depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
+verify error:num=18:self signed certificate
+verify return:1
+depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
+verify return:1
+DONE
+CONNECTED(00000003)
+---
+Certificate chain
+ 0 s:/C=AU/ST=Some-State/O=Internet Widgits Pty Ltd
+   i:/C=AU/ST=Some-State/O=Internet Widgits Pty Ltd
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIDazCCAlOgAwIBAgIUUWBj1DL0r1TRK/dHpKSOke8mNyowDQYJKoZIhvcNAQEL
+BQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM
+GEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0xOTEwMjUxNjE5MzFaFw0yMDEw
+MjQxNjE5MzFaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw
+HwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB
+AQUAA4IBDwAwggEKAoIBAQDIC3Wj6US5oUyyjcSP616loFW94MExGLh0Flr02LfO
+X2w0ZkDOGC1B/zHrJK4On+z8bwx/+L1hytq/aVytgUQWoGWZwQGuzU7ev+lKjcIW
+ai2Zeqk3RysFPNticj/qWomS+g2o2RFJ/oEtg6BdAsy49VZjS0BTPpdoBBb7sMOp
+S0GvGPY85uFG9QTD/4o4UOfvruSHeJHih3pRYvkqwpZ3Al9EJuCI5zDchBr21fa9
+0JNFecJb1HymDk/eN3FxDHf/ubdB/TMx8oauC5WVoA/cLZjfZa6r+Ibv6wGnZe9F
+GZocIDBGxyeLRbHTzN42/7L6mTn4br9VWzLEswj8glT3AgMBAAGjUzBRMB0GA1Ud
+DgQWBBSDg9456bq2D7ileJyJm3Dw1QE7eDAfBgNVHSMEGDAWgBSDg9456bq2D7il
+eJyJm3Dw1QE7eDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQBp
+htY9dAYDr3+yewxDbenTzcPuD4nS1x11NNfKHNY/Ju6fQa2/cNzgHu3oOaGlQRQ4
+Ob3wgkk7sK6YuyKR5YllT9vOGqBw/Ha9x7cdRaP4gKEnxrMIdxEIWJifz72TF7xI
+SId9FHVKy9awaunIGJelJ+v2J4ZHkUk2vHLjR57SQdv+ENuMeQZX34PwvcLvXhRj
+joX7tBBYYoB/haFlW9WMHM7HyYryMAirxnF3ltXWley0vnLXlkFLRSp4xzr0ERZW
+1vXmmTv+c+yXzTo03A4BcEBZg0gN4FjM3lKJjiC9M6hJ8oVIJ+40MoKTgNjaupb7
+vXxBDJcqvz+HMrruHXw3
+-----END CERTIFICATE-----
+subject=/C=AU/ST=Some-State/O=Internet Widgits Pty Ltd
+issuer=/C=AU/ST=Some-State/O=Internet Widgits Pty Ltd
+---
+No client certificate CA names sent
+---
+SSL handshake has read 1211 bytes and written 408 bytes
+Verification error: self signed certificate
+---
+New, SSLv3, Cipher is AES128-SHA
+Server public key is 2048 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1.1
+    Cipher    : AES128-SHA
+    Session-ID: C841882961DF32649C3C5904107086BE64AB2D49C2BE6FF891D8928DA3E88966
+    Session-ID-ctx: 
+    Master-Key: 8350934DB1CACB700F651AECA1C24E68D63DFAA25F218C78A9F3B2BC3B4BD82F8E18F61CF7AA93CA74A74F9740D20421
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - bf 9d 21 0c 7d b9 97 a6-3d 27 2b 78 d7 20 ff 13   ..!.}...='+x. ..
+    0010 - ed 64 f0 fe 9c 28 fc 83-0e cd 62 ee 1e ab 0b 94   .d...(....b.....
+    0020 - 5c c4 5a 1f e2 15 61 38-ac 6f 0b 37 94 ee fa e9   \.Z...a8.o.7....
+    0030 - 72 ba 46 9a 04 27 2a a4-f8 64 27 b5 e8 81 3b d7   r.F..'*..d'...;.
+    0040 - 5f e5 68 a2 40 77 0b ed-cc 98 a1 59 19 c4 eb b8   _.h.@w.....Y....
+    0050 - aa 10 13 a6 9a 7c 14 ab-a2 e0 a5 92 4a c9 80 f1   .....|......J...
+    0060 - 0d b4 19 6f a6 74 f9 6f-42 da f4 16 50 ff 7a 30   ...o.t.oB...P.z0
+    0070 - eb 05 39 5e 78 e7 08 d5-db 43 8a c1 5e 8d 1a 62   ..9^x....C..^..b
+    0080 - 88 81 6f 70 7d cc e1 fa-b6 1f 39 46 e3 e2 d7 0a   ..op}.....9F....
+    0090 - f9 ff 34 30 17 11 7a d7-80 09 70 03 41 c6 ec a5   ..40..z...p.A...
+
+    Start Time: 1578582429
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self signed certificate)
+    Extended master secret: no
+---

@@ -1,4 +1,4 @@
-FROM alpine:3.8.4
+FROM alpine:3.7
 
 ARG OPENSSL_VERSION=1.0.2t-r0
 
