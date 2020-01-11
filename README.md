@@ -1,4 +1,4 @@
-# Projet TLS
+# Projet TLS @TelecomSudParis
 
 ## Requirements
 
@@ -8,91 +8,111 @@
 - virtualenv
 - wireshark >= 3.2.0
 
-## Quelques détails
+## Dossier `network/`
+
+Pour établir le réseau de plusieurs serveurs et clients OpenSSL.
 
 ### Dockerfile
 
 1 Dockerfile par version d'OpenSSL :
+- `docker-openssl/1.0.2t/Dockerfile`
 - `docker-openssl/1.0.2u/Dockerfile`
 - `docker-openssl/1.1.0l/Dockerfile`
 - `docker-openssl/1.1.1d/Dockerfile`
 
 ### Docker-Compose
 
-- 1 réseau `tls`. L'hôte fournit le bridge, ayant une interface réseau sur ce réseau, elle sera utilisée pour les captures de trames avec Wireshark.
+- 1 réseau `tls-nework`. L'hôte fournit le bridge, ayant une interface réseau sur ce réseau, elle sera utilisée pour les captures de trames avec Wireshark.
+- 1 container `server-102t`, directement lancé comme serveur OpenSSL 1.0.2t.
 - 1 container `server-102u`, directement lancé comme serveur OpenSSL 1.0.2u.
 - 1 container `server-110l`, directement lancé comme serveur OpenSSL 1.1.0l.
 - 1 container `server-111d`, directement lancé comme serveur OpenSSL 1.1.1d.
+- 1 container `client-102t` qui peut servir de client OpenSSL 1.0.2t ou HTTPS avec cURL.
 - 1 container `client-102u` qui peut servir de client OpenSSL 1.0.2u ou HTTPS avec cURL.
 - 1 container `client-110l` qui peut servir de client OpenSSL 1.1.0l ou HTTPS avec cURL.
 - 1 container `client-111d` qui peut servir de client OpenSSL 1.1.1d ou HTTPS avec cURL.
 - Certificat et clé privé par défault utilisés par les containers `server-*`, dans `cert/`.
-- Output des secrets TLS dans `keylog/key.log`. Notamment utilisé pour déchiffrer les messages HTTPS (ou autre) avec Wireshark.
 
-Tous les containers sont connectés au réseau `tls`.
+Tous les containers sont attachés au réseau `tls-network`.
 
-## Use
+### Use
 
 ```
 $ docker-compose build
 $ docker-compose up -d
 ```
 
-## bac à sable
+## Dossier `app/`
 
-### HTTPS Client vers Server
+On y trouve l'application Flask ainsi que la base de données. La base de données est populée par le script `REPO/scripts/main.py`. Voir la section `Dossier scripts/`.
 
-```
-$ docker exec -it client-102u curl -k https://server-102u
-$ docker exec -it client-102u openssl s_client -connect server-111d:443
-```
+Source code dans `app/src/`.
+Dump de la base de données dans `db/dump/`.
 
-Le serveur OpenSSL 1.1.1d est lancé avec le paramètre `-keylogfile`. Dès la première connexion TLS, le fichier `keylog/key.log` (sur l'hôte) peut être exploité par Wireshark pour déchiffrer les messages HTTPS.
+### Use
 
-- Wireshark (sur l'hôte) :
-
-Lancer Wireshark. Onglet Editer > Préférences > Protocols > SSL > (Pre)-Master-Secret log filename = le fichier `keylog/key.log`. Valider. Sélectionner la bonne interface sur laquelle capturer, exemple : `br-012345abcdef`.
-
-Un exemple de capture avec un message HTTPS déchiffré :
-
-![HTTPS déchiffré](img/wireshark_https_dechiffre.png)
-
-Pour les versions d'OpenSSL 1.0.2u et 1.1.0l, l'extraction des keylogs n'est pas implémentée. Il est possible de les obtenir depuis `client-102u` ou `client-110l` avec les exemples suivants en utilisant cURL :
+Builder et lancer l'application Flask et la base de données MySQL :
 
 ```
-$ SSLKEYLOGFILE=./secrets.keylog curl -k https://server-102u
-$ SSLKEYLOGFILE=./secrets.keylog curl -k https://server-111d
+$ docker-compose build
+$ docker-compose up -d
 ```
 
-### Automatisation de l'exécution des sessions TLS
+Ce docker-compose lance :
+- container `tls-app` attaché aux réseaux `tls-app` et `tls-db`
+- container `tls-db` attaché au réseau `tls-db` seulement
 
-Dans le dossier `scripts/`.
+Afficher et suivre le debug de l'application Flask :
+
+```
+$ docker logs -f tls-app
+```
+
+## Dossier `scripts/`
 
 Le script Python `main.py` permet d'établir des sessions TLS vers tous les serveurs OpenSSL depuis chaque client OpenSSL, pour chaque version de TLS et ciphers supportés.
 
-Le script fournit pour chaque session dans le dossier `results` :
+Le script fournit pour chaque session dans le dossier `results/` :
 - logs de session
 - fichier de capture de trames
 - fichier de capture de trames déchiffrée si la session a été correctement établie
 - secrets TLS si la session a été correctement établie
 
-Les données de chaque session sont insérées dans une base de données MySQL. Un extract est présent dans `sql_server/dump/data.sql`. Au lancement du container `sql-server`, `data.sql` est importé.
+Les données de chaque session sont insérées dans une base de données MySQL. Voir la section `Dossier app/`.
+
+### Use
+
+La base de données MySQL doit être up and running :
 
 ```
-$ cd scripts/sql_server
+$ cd REPO/
+$ cd app/
 $ docker-compose up -d
-$ cd ..
+```
+
+Préparation de l'environnement virtuel Python :
+
+```
 $ virtualenv -p python3 ~/.venv/tsp-tls
 $ source ~/.venv/tsp-tls/bin/activate
+$ cd REPO/scripts/
 $ pip install -r requirements.txt
-$ chmod +x main.py
-# debut : donner les droits de capture avec scapy pour python et tcpdump
+```
+
+Donner les droits de capture par Scapy pour Python et Tcpdump :
+
+```
 $ which python3
 ~/.venv/tsp-tls/bin/python3
 $ sudo setcap cap_net_raw=eip ~/.venv/tsp-tls/bin/python3
 $ which tcpdump
 /usr/sbin/tcpdump
 $ sudo setcap cap_net_raw=eip /usr/sbin/tcpdump
-# fin : donner les droits de capture avec scapy pour python et tcpdump
+```
+
+Lancer le script Python :
+
+```
+$ chmod +x main.py
 $ ./main.py
 ```

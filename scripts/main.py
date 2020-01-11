@@ -38,7 +38,7 @@ def list_openssl_versions(path="../docker-openssl"):
     return versions
 
 
-def get_network_interface(docker_client, docker_network="tls_tls"):
+def get_network_interface(docker_client, docker_network="tls-network"):
     """Donne l'ID du réseau Docker utilisé.
 
     Args:
@@ -293,7 +293,7 @@ def decrypt_tls_packet_capture(openssl_client_version, openssl_server_version, t
     return None
 
 
-def get_mysql_server_params(docker_client, container_name="mysql-server", container_network="sql_server_sql"):
+def get_mysql_server_params(docker_client, container_name="tls-db", container_network="tls-db"):
     """Donne l'adresse IP du container, le user, mot de passe et nom de la base de données MySQL Server.
 
     Args:

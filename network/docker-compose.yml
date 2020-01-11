@@ -1,4 +1,4 @@
-version: '3'
+version: "3.7"
 
 services:
 
@@ -7,7 +7,7 @@ services:
     container_name: server-102t
     tty: true
     networks:
-      - tls
+      - main
     expose:
       - 443
     volumes:
@@ -19,7 +19,7 @@ services:
     container_name: server-102u
     tty: true
     networks:
-      - tls
+      - main
     expose:
       - 443
     volumes:
@@ -31,7 +31,7 @@ services:
     container_name: server-110l
     tty: true
     networks:
-      - tls
+      - main
     expose:
       - 443
     volumes:
@@ -43,7 +43,7 @@ services:
     container_name: server-111d
     tty: true
     networks:
-      - tls
+      - main
     expose:
       - 443
     volumes:
@@ -55,28 +55,29 @@ services:
     container_name: client-102t
     tty: true
     networks:
-      - tls
+      - main
 
   client-102u:
     build: ./docker-openssl/1.0.2u
     container_name: client-102u
     tty: true
     networks:
-      - tls
+      - main
 
   client-110l:
     build: ./docker-openssl/1.1.0l
     container_name: client-110l
     tty: true
     networks:
-      - tls
+      - main
 
   client-111d:
     build: ./docker-openssl/1.1.1d
     container_name: client-111d
     tty: true
     networks:
-      - tls
+      - main
 
 networks:
-  tls:
+  main:
+    name: tls-network
