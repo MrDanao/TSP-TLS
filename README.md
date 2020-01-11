@@ -72,7 +72,7 @@ $ docker logs -f tls-app
 
 Le container `tls-app` n'a pas besoin de connaître l'adresse IP du container `tls-db`. L'usage du host "tls-db" suffit.
 
-Les containers `tls-app` et `tls-db` se partagent les variables d'environnement suivantes : `MYSQL_ROOT_PASSWORD`, `MYSQL_DATABASE`, `MYSQL_USER` et `MYSQL_PASSWORD`. Le container `tls-app` peut alors réutiliser ces variables d'environnement pour configure son client MySQL, ainsi se connecter à la base de données de `tls-db`.
+Les containers `tls-app` et `tls-db` se partagent les variables d'environnement suivantes : `MYSQL_ROOT_PASSWORD`, `MYSQL_DATABASE`, `MYSQL_USER` et `MYSQL_PASSWORD`. Le container `tls-app` peut alors réutiliser ces variables d'environnement pour configurer son client MySQL, ainsi se connecter à la base de données de `tls-db`.
 
 ## Dossier `scripts/`
 
@@ -91,17 +91,23 @@ Les données de chaque session sont insérées dans une base de données MySQL. 
 La base de données MySQL doit être up and running :
 
 ```
-$ cd REPO/
-$ cd app/
+$ cd REPO/app/
+$ docker-compose up -d
+```
+
+Les client et serveurs OpenSSL doivent être up and running :
+
+```
+$ cd REPO/network/
 $ docker-compose up -d
 ```
 
 Préparation de l'environnement virtuel Python :
 
 ```
+$ cd REPO/scripts/
 $ virtualenv -p python3 ~/.venv/tsp-tls
 $ source ~/.venv/tsp-tls/bin/activate
-$ cd REPO/scripts/
 $ pip install -r requirements.txt
 ```
 
