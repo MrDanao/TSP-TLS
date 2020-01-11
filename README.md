@@ -68,6 +68,12 @@ Afficher et suivre le debug de l'application Flask :
 $ docker logs -f tls-app
 ```
 
+### Client MySQL dans le container `tls-app`
+
+Le container `tls-app` n'a pas besoin de connaître l'adresse IP du container `tls-db`. L'usage du host "tls-db" suffit.
+
+Les containers `tls-app` et `tls-db` se partagent les variables d'environnement suivantes : `MYSQL_ROOT_PASSWORD`, `MYSQL_DATABASE`, `MYSQL_USER` et `MYSQL_PASSWORD`. Le container `tls-app` peut alors réutiliser ces variables d'environnement pour configure son client MySQL, ainsi se connecter à la base de données de `tls-db`.
+
 ## Dossier `scripts/`
 
 Le script Python `main.py` permet d'établir des sessions TLS vers tous les serveurs OpenSSL depuis chaque client OpenSSL, pour chaque version de TLS et ciphers supportés.
