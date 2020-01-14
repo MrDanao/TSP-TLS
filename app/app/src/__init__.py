@@ -5,9 +5,9 @@ import os
 app = Flask(__name__)
 
 app.config["MYSQL_HOST"] = "db"
-app.config["MYSQL_DB"] = "openssl"
-app.config["MYSQL_PASSWORD"] = "123Vitrygtr"
-app.config["MYSQL_USER"] = "tsptls"
+app.config["MYSQL_DB"] = os.environ['MYSQL_DATABASE']
+app.config["MYSQL_PASSWORD"] = os.environ['MYSQL_PASSWORD']
+app.config["MYSQL_USER"] = os.environ['MYSQL_USER']
 mysql = MySQL(app)
 
 UPLOADS_DIRECTORY = "downloads"
@@ -31,10 +31,10 @@ def index():
         versions = get_version_client()
         client = request.form['client']
         server = request.form['serveur']
-        tls_version = result_tls_version(request.form['client'],request.form['serveur'])
-        data = result_ciphers_name(request.form['client'],request.form['serveur'],tls_version)
+        tls_version = result_tls_version(request.form['client'], request.form['serveur'])
+        data = result_ciphers_name(request.form['client'], request.form['serveur'], tls_version)
         
-        return render_template('index.html', client=client, server=server ,version=versions, tls_version=tls_version, data=data)
+        return render_template('index.html', client=client, server=server, version=versions, tls_version=tls_version, data=data)
         
     else:
         versions = get_version_client()
@@ -57,7 +57,7 @@ def get_version_client():
 
 def result_tls_version(client, serveur):
     db_l = get_db()
-    query = "SELECT DISTINCT tls_version FROM sessions WHERE openssl_client_version=%s AND openssl_server_version=%s"
+    query = "SELECT DISTINCT tls_version FROM sessions WHERE openssl_client_version=%s AND openssl_server_version=%s ORDER BY tls_version DESC"
     val = (client, serveur)
     db_l.execute(query, val)
     result = db_l.fetchall()
