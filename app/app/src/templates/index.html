@@ -18,24 +18,24 @@
             <div class="form-group form-row">
                 <div class="col-md-4 mb-4">
                     <select class="custom-select" name="client" id="client" required>
-                      <option selected disabled value="">Client ...</option>
+                      <option selected disabled value="">Version du client OpenSSL</option>
                       {% for client in version %}
-                        <option value="{{client}}" > Client {{client}}</option>
+                        <option value="{{client}}" >OpenSSL {{client}}</option>
                       {% endfor %}
                     </select>
                     <div class="invalid-tooltip">
-                        selectionner un client
+                        Sélectionner une version OpenSSL du client.
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <select class="custom-select" name="serveur" id="serveur" required>
-                      <option selected disabled value="">Serveur ...</option>
+                      <option selected disabled value="">Version du serveur OpenSSL</option>
                       {% for client in version %}
-                        <option value="{{client}}" > Serveur {{client}}</option>
+                        <option value="{{client}}" >OpenSSL {{client}}</option>
                       {% endfor %}
                     </select>
                     <div class="invalid-tooltip">
-                      Selectionner un Serveur
+                      Sélectionner la version OpenSSL du serveur.
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
@@ -49,10 +49,10 @@
     <div>
         <div class="row">
             <div class="col-md-4 mb-4" >
-                Client : {{ client }}
+                Client OpenSSL : {{ client }}
             </div> 
             <div class="col-md-4 mb-4" >
-                Serveur : {{server}}
+                Serveur OpenSSL : {{server}}
             </div>
         </div>
         <table class="table table-striped">
