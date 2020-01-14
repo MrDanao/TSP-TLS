@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
+
+    <title>Projet TLS</title>
+  </head>
+  {% block content %}
+  <body class="container">
+    <h1 class="display-4 text-center">Projet&nbsp;-&nbsp;TLS</h1>
+    <div class="container">
+        <form method="POST" action="/">
+            <div class="form-group form-row">
+                <div class="col-md-4 mb-4">
+                    <select class="custom-select" name="client" id="client" required>
+                      <option selected disabled value="">Client ...</option>
+                      {% for client in version %}
+                        <option value="{{client}}" > Client {{client}}</option>
+                      {% endfor %}
+                    </select>
+                    <div class="invalid-tooltip">
+                        selectionner un client
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <select class="custom-select" name="serveur" id="serveur" required>
+                      <option selected disabled value="">Serveur ...</option>
+                      {% for client in version %}
+                        <option value="{{client}}" > Serveur {{client}}</option>
+                      {% endfor %}
+                    </select>
+                    <div class="invalid-tooltip">
+                      Selectionner un Serveur
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <button class="btn btn-primary" type="submit">Lancer</button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-md-4 mb-4" >
+                Client : {{ client }}
+            </div> 
+            <div class="col-md-4 mb-4" >
+                Serveur : {{server}}
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center align-middle">Version TLS</th>
+                <th scope="col" class="text-center align-middle">Ciphers</th>
+                <th scope="col" class="text-center align-middle">Capture Original</th>
+                <th scope="col" class="text-center align-middle">Capture Décryptée</th>
+              </tr>
+            </thead>
+            <tbody>
+                
+                {% for tls in tls_version %}
+
+                    <tr>
+                        {% if tls == '1' %}
+                            <th scope="row" class="text-center align-middle">TLS {{tls}}.0 </th>
+                        {% else %}
+                            <th scope="row" class="text-center align-middle">TLS {{tls}} </th>
+                        {% endif %}
+                        <!-- Block pour afficher les chiphers -->
+                        <td class="text-left align-middle">
+                        {% for cipher in data[loop.index - 1] %}
+                            {% if cipher["RESULT"] == 1 %}
+                                <a href="{{ cipher['LOG'] }}"><span class="d-block text-success">{{ cipher['CIPHER'] }}</span></a>
+                            {% else %}
+                                <a href="{{ cipher['LOG'] }}"><span class="d-block text-danger">{{ cipher['CIPHER'] }}</span></a>
+                            {% endif %} 
+                        {% endfor %}
+                        </td>
+                        
+                        <td class="text-center align-middle">
+                        {% for cipher in data[loop.index - 1] %}
+                                <a href="{{ cipher['OR_CAPT']}}"><span class="d-block text-info">Télécharger</span></a>
+                        {% endfor %}
+                        </td>
+                        <td class="text-center align-middle">
+                            {% for cipher in data[loop.index - 1] %}
+                                {% if cipher["RESULT"] == 1 %}
+                                    <a href="{{ cipher['DCRYPT_CAPT']}}"><span class="d-block text-info">Télécharger</span></a>
+                                {% else %}
+                                    <span class="d-block text-info">X</span>
+                                {% endif %} 
+                            {% endfor %}
+                            </td>
+                    </tr>
+                {% endfor %}
+               
+            </tbody>
+          </table>
+    </div>
+
+    
+  </body>
+</html>
+{% endblock %}
