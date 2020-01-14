@@ -1,2 +1,5 @@
 .idea/
 keylog/key.log
+.python-version
+__pycache__
+.DS_Store

@@ -6,11 +6,14 @@ services:
     build: ./app
     container_name: tls-app
     #restart: always
+    volumes: 
+      - ./app/src:/tls/app
+      - ../scripts/results/:/tls/app/downloads/results
     networks:
       - app
       - db
-    expose:
-      - 5000
+    ports:
+      - 5000:5000
     env_file: ./.env
     links:
       - db:db

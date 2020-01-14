@@ -59,7 +59,7 @@
             <thead>
               <tr>
                 <th scope="col" class="text-center align-middle">Version TLS</th>
-                <th scope="col" class="text-center align-middle">Ciphers</th>
+                <th scope="col" class="text-left align-middle">Ciphers</th>
                 <th scope="col" class="text-center align-middle">Capture Original</th>
                 <th scope="col" class="text-center align-middle">Capture Décryptée</th>
               </tr>
@@ -78,24 +78,24 @@
                         <td class="text-left align-middle">
                         {% for cipher in data[loop.index - 1] %}
                             {% if cipher["RESULT"] == 1 %}
-                                <a href="{{ cipher['LOG'] }}"><span class="d-block text-success">{{ cipher['CIPHER'] }}</span></a>
+                                <a href="/uploads/{{ cipher['LOG'] }}"><small><span class="d-block text-success">{{ cipher['CIPHER'] }}</span></small></a>
                             {% else %}
-                                <a href="{{ cipher['LOG'] }}"><span class="d-block text-danger">{{ cipher['CIPHER'] }}</span></a>
+                                <a href="/uploads/{{ cipher['LOG'] }}"><small><span class="d-block text-danger">{{ cipher['CIPHER'] }}</span></small></a>
                             {% endif %} 
                         {% endfor %}
                         </td>
                         
                         <td class="text-center align-middle">
                         {% for cipher in data[loop.index - 1] %}
-                                <a href="{{ cipher['OR_CAPT']}}"><span class="d-block text-info">Télécharger</span></a>
+                                <a href="/uploads/{{ cipher['OR_CAPT']}}"><small><span class="d-block text-info">Télécharger</span></small></a>
                         {% endfor %}
                         </td>
                         <td class="text-center align-middle">
                             {% for cipher in data[loop.index - 1] %}
                                 {% if cipher["RESULT"] == 1 %}
-                                    <a href="{{ cipher['DCRYPT_CAPT']}}"><span class="d-block text-info">Télécharger</span></a>
+                                    <a href="/uploads/{{ cipher['DCRYPT_CAPT']}}"><small><span class="d-block text-info">Télécharger</span></small></a>
                                 {% else %}
-                                    <span class="d-block text-info">X</span>
+                                    <small><span class="d-block text-info">X</span></small>
                                 {% endif %} 
                             {% endfor %}
                             </td>
