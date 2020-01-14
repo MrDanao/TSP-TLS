@@ -59,9 +59,10 @@
             <thead>
               <tr>
                 <th scope="col" class="text-center align-middle">Version TLS</th>
-                <th scope="col" class="text-left align-middle">Ciphers</th>
-                <th scope="col" class="text-center align-middle">Capture Original</th>
-                <th scope="col" class="text-center align-middle">Capture Décryptée</th>
+                <th scope="col" class="text-left align-middle">Cipher - Logs</th>
+                <th scope="col" class="text-center align-middle">Capture Originale</th>
+                <th scope="col" class="text-center align-middle">Capture Déchiffrée</th>
+                <th scope="col" class="text-center align-middle">Secret TLS</th>
               </tr>
             </thead>
             <tbody>
@@ -98,7 +99,16 @@
                                     <small><span class="d-block text-info">X</span></small>
                                 {% endif %} 
                             {% endfor %}
-                            </td>
+                        </td>
+                        <td class="text-center align-middle">
+                            {% for cipher in data[loop.index - 1] %}
+                                {% if cipher["RESULT"] == 1 %}
+                                    <a href="/uploads/{{ cipher['TLS_SECRET']}}"><small><span class="d-block text-info">Télécharger</span></small></a>
+                                {% else %}
+                                    <small><span class="d-block text-info">X</span></small>
+                                {% endif %} 
+                            {% endfor %}
+                        </td>
                     </tr>
                 {% endfor %}
                
