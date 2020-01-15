@@ -54,8 +54,8 @@ Dump de la base de données dans `db/dump/`.
 Builder et lancer l'application Flask et la base de données MySQL :
 
 ```
-$ docker-compose build
-$ docker-compose up -d
+$ docker-compose -f dev.docker-compose.yml build
+$ docker-compose -f dev.docker-compose.yml up -d
 ```
 
 Ce docker-compose lance :
