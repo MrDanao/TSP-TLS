@@ -1,0 +1,45 @@
+version: "3.7"
+
+services:
+
+  app:
+    build: ./app
+    container_name: tls-app
+    #restart: always
+    networks:
+      - default
+      - db
+    expose:
+      - 5000
+    volumes:
+      - ./app/src:/tls/app
+      - ../scripts/results/:/tls/app/downloads/results
+    env_file: ./.env
+    environment:
+      VIRTUAL_HOST: tsptls.dantran.fr
+      LETSENCRYPT_HOST: tsptls.dantran.fr
+      LETSENCRYPT_EMAIL: contact@dantran.fr
+    links:
+      - db:db
+    depends_on:
+      - db
+
+  db:
+    image: mysql
+    container_name: tls-db
+    #restart: always
+    networks:
+      - db
+    expose:
+      - 3306
+    volumes:
+      - ./db/dump:/docker-entrypoint-initdb.d
+    env_file: ./.env
+    command: --default-authentication-plugin=mysql_native_password
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
+  db:
+    name: tls-db
