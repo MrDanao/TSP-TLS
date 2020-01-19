@@ -18,11 +18,11 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
-def list_openssl_versions(path="../docker-openssl"):
+def list_openssl_versions(path="../network/docker-openssl"):
     """Liste les versions d'OpenSSL utilisées avec le formatage adapté sans les points.
 
     Args:
-        path: Chemin des Dockerfile pour chaque version, par défaut ../docker-openssl.
+        path: Chemin des Dockerfile pour chaque version, par défaut ../network/docker-openssl.
 
     Returns:
         Liste des version OpenSSL utilisées, sans les points : 111d pour 1.1.1d.
