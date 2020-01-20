@@ -12,7 +12,7 @@ services:
       - 443
     volumes:
       - ./cert:/cert
-    command: s_server -key /cert/key.pem -cert /cert/cert.pem -accept 443 -www
+    command: s_server -key /cert/rsa_key.pem -cert /cert/rsa_cert.pem -dkey /cert/ecdsa_key.pem -dcert /cert/ecdsa_cert.pem -accept 443 -www
 
   server-102u:
     build: ./docker-openssl/1.0.2u
@@ -24,7 +24,7 @@ services:
       - 443
     volumes:
       - ./cert:/cert
-    command: s_server -key /cert/key.pem -cert /cert/cert.pem -accept 443 -www
+    command: s_server -key /cert/rsa_key.pem -cert /cert/rsa_cert.pem -dkey /cert/ecdsa_key.pem -dcert /cert/ecdsa_cert.pem -accept 443 -www
 
   server-110l:
     build: ./docker-openssl/1.1.0l
@@ -36,7 +36,7 @@ services:
       - 443
     volumes:
       - ./cert:/cert
-    command: s_server -key /cert/key.pem -cert /cert/cert.pem -accept 443 -www
+    command: s_server -key /cert/rsa_key.pem -cert /cert/rsa_cert.pem -dkey /cert/ecdsa_key.pem -dcert /cert/ecdsa_cert.pem -accept 443 -www
 
   server-111d:
     build: ./docker-openssl/1.1.1d
@@ -48,7 +48,7 @@ services:
       - 443
     volumes:
       - ./cert:/cert
-    command: s_server -key /cert/key.pem -cert /cert/cert.pem -accept 443 -www
+    command: s_server -key /cert/rsa_key.pem -cert /cert/rsa_cert.pem -dkey /cert/ecdsa_key.pem -dcert /cert/ecdsa_cert.pem -accept 443 -www
 
   client-102t:
     build: ./docker-openssl/1.0.2t

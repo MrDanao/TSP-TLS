@@ -1,29 +1,69 @@
-140701578068416:error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure:ssl/record/rec_layer_s3.c:1407:SSL alert number 40
+depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
+verify error:num=18:self signed certificate
+verify return:1
+depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
+verify return:1
 CONNECTED(00000003)
 ---
-no peer certificate available
+Certificate chain
+ 0 s:/C=AU/ST=Some-State/O=Internet Widgits Pty Ltd
+   i:/C=AU/ST=Some-State/O=Internet Widgits Pty Ltd
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIB4DCCAYWgAwIBAgIUCXxxGEjDfI8qZM/lYEyRO/5FAH8wCgYIKoZIzj0EAwIw
+RTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoMGElu
+dGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMDAxMjAxOTU0MTVaFw0yMTAxMTkx
+OTU0MTVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYD
+VQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwWTATBgcqhkjOPQIBBggqhkjO
+PQMBBwNCAAQEWvQ5kNNn0gohxZiHN8GZ2c2YUKQBqHDOBcDHaOesleIQlq72x5jF
+w74Y1H7BLGlwvZuJ3N/4jF8UdT098W+ho1MwUTAdBgNVHQ4EFgQU5K267TWlHB0Y
+HXW940sLw8SUXeEwHwYDVR0jBBgwFoAU5K267TWlHB0YHXW940sLw8SUXeEwDwYD
+VR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNJADBGAiEA4GScbVO50YAPJtbP4fny
+StHIpNxRcMsSij4Qe2KiM/sCIQDY7Um4nntc3KIF6WOb68OZOQRfQylRLfyllN5r
+hm7Z4g==
+-----END CERTIFICATE-----
+subject=/C=AU/ST=Some-State/O=Internet Widgits Pty Ltd
+issuer=/C=AU/ST=Some-State/O=Internet Widgits Pty Ltd
 ---
 No client certificate CA names sent
+Peer signing digest: SHA512
+Server Temp Key: X25519, 253 bits
 ---
-SSL handshake has read 7 bytes and written 124 bytes
-Verification: OK
+SSL handshake has read 984 bytes and written 273 bytes
+Verification error: self signed certificate
 ---
-New, (NONE), Cipher is (NONE)
-Secure Renegotiation IS NOT supported
+New, TLSv1.2, Cipher is ECDHE-ECDSA-AES256-SHA384
+Server public key is 256 bit
+Secure Renegotiation IS supported
 Compression: NONE
 Expansion: NONE
 No ALPN negotiated
 SSL-Session:
     Protocol  : TLSv1.2
-    Cipher    : 0000
-    Session-ID: 
+    Cipher    : ECDHE-ECDSA-AES256-SHA384
+    Session-ID: 97DFB827D5689CB3FD9CB1691A3D4D8DB36BFACDCE0FBB1442E3B109A315206C
     Session-ID-ctx: 
-    Master-Key: 
+    Master-Key: 2FA12730256E74BF4332961C18F0312340D34DCD86B63E59BE6AE5995DA735E1A3E626BC0E2F65859E9E152BC128C382
     PSK identity: None
     PSK identity hint: None
     SRP username: None
-    Start Time: 1578582445
+    TLS session ticket lifetime hint: 7200 (seconds)
+    TLS session ticket:
+    0000 - 39 ae fe b3 27 b7 f1 a7-4e 97 14 09 6f 34 40 7f   9...'...N...o4@.
+    0010 - 2f 18 94 27 d5 0f 67 f8-de 9a 63 fe c9 96 a6 96   /..'..g...c.....
+    0020 - 25 c6 7f e8 c7 b0 39 4f-a5 fd 9e 41 f7 28 52 ae   %.....9O...A.(R.
+    0030 - 84 10 75 3a b3 c6 cf 5c-98 70 16 de d8 ba c4 f0   ..u:...\.p......
+    0040 - 75 b6 de 04 49 b7 31 34-b7 7f ea f0 6b cd 02 2b   u...I.14....k..+
+    0050 - 05 76 20 c2 61 a4 be 10-95 55 be f4 93 00 59 5d   .v .a....U....Y]
+    0060 - 8a 97 1c a8 ca 0d 0d 3b-1b e1 7f a3 ff 41 5d ed   .......;.....A].
+    0070 - d8 64 06 61 ee d9 06 c1-f1 aa 2d 97 86 b1 19 08   .d.a......-.....
+    0080 - fa dd fd 7d 7e 3e d1 57-d9 61 e0 3c 30 4b c8 ee   ...}~>.W.a.<0K..
+    0090 - 52 89 38 58 02 c2 00 33-eb 0b 74 fa 14 e4 51 4a   R.8X...3..t...QJ
+
+    Start Time: 1579551213
     Timeout   : 7200 (sec)
-    Verify return code: 0 (ok)
-    Extended master secret: no
+    Verify return code: 18 (self signed certificate)
+    Extended master secret: yes
 ---
+DONE

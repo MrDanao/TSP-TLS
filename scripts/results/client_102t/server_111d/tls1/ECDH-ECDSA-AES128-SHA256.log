@@ -1,3 +1,4 @@
+140050912308172:error:140830B5:SSL routines:ssl3_client_hello:no ciphers available:s3_clnt.c:837:
 CONNECTED(00000003)
 ---
 no peer certificate available
@@ -21,8 +22,7 @@ SSL-Session:
     PSK identity: None
     PSK identity hint: None
     SRP username: None
-    Start Time: 1578582242
+    Start Time: 1579551008
     Timeout   : 7200 (sec)
     Verify return code: 0 (ok)
 ---
-139786977709004:error:140830B5:SSL routines:ssl3_client_hello:no ciphers available:s3_clnt.c:837:
