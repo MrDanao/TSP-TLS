@@ -52,26 +52,26 @@ No ALPN negotiated
 SSL-Session:
     Protocol  : TLSv1.2
     Cipher    : ECDHE-RSA-AES128-GCM-SHA256
-    Session-ID: 139C27E659BD8D8DE27FC677B01A0506633F10DE982409A56D805416FED0B960
+    Session-ID: E3D81A1AFD3F6AC461508AEA25AB8BC99F3B74A6D1932BEDDEC3B2F17BA945CF
     Session-ID-ctx: 
-    Master-Key: A746E352372483F6B2A52801E01D32FC7CA5A802B1FD120B1E320CD0D7D8007210C578D72706FCB851B3F5C040298F08
+    Master-Key: 5CA7E1233DCB72D0B7BC5CC21845ED4ED914064AC42437F6D04B7F00EA256D5A03761FA9687573426F9F14003F12275E
     PSK identity: None
     PSK identity hint: None
     SRP username: None
     TLS session ticket lifetime hint: 300 (seconds)
     TLS session ticket:
-    0000 - bf 9d 21 0c 7d b9 97 a6-3d 27 2b 78 d7 20 ff 13   ..!.}...='+x. ..
-    0010 - 86 96 87 9a 40 52 9d 78-ed f3 76 a8 98 08 dc d1   ....@R.x..v.....
-    0020 - 21 0c 71 4f 6f c3 29 3f-58 71 d5 d7 ac ed 90 01   !.qOo.)?Xq......
-    0030 - 65 83 55 c0 18 01 a9 12-d6 81 29 49 4c ce 98 33   e.U.......)IL..3
-    0040 - 68 50 67 33 71 1f 21 85-fa fe 89 e2 7e ce 20 53   hPg3q.!.....~. S
-    0050 - 77 6f 3a a5 82 cb ca 92-ca 57 9a ab a6 5a d1 8e   wo:......W...Z..
-    0060 - 4d 8a e1 cc 7e f7 87 8c-e9 26 01 8b 56 5e d9 13   M...~....&..V^..
-    0070 - b4 31 53 05 2e 16 85 55-9b b3 36 89 c2 dc 72 60   .1S....U..6...r`
-    0080 - ec 09 0d bf 4a bb 23 36-04 48 31 49 da d6 47 c5   ....J.#6.H1I..G.
-    0090 - a7 68 a7 8b 94 ff bb d2-ca 0e ba 37 73 55 4a 72   .h.........7sUJr
+    0000 - a7 71 c3 47 9b 45 0b c1-f2 01 3f fc 24 36 58 c3   .q.G.E....?.$6X.
+    0010 - 3d 09 f2 84 54 54 cf 97-4e 3e 94 76 e0 e3 f2 e5   =...TT..N>.v....
+    0020 - 06 ea 40 f1 4a e7 d5 e9-2e a8 b4 b4 00 96 74 97   ..@.J.........t.
+    0030 - 26 8f 80 97 66 b4 91 70-fc 05 2a 44 9e 78 f2 5d   &...f..p..*D.x.]
+    0040 - b2 f4 cf 9f 96 f1 1f 4f-af 4e db 2e 06 eb 87 01   .......O.N......
+    0050 - 70 2c fa a6 07 8e 9f 99-47 ba 08 f6 df 0e 9f 33   p,......G......3
+    0060 - d4 e3 c6 5d c5 94 58 45-8f 11 bd 41 16 cd 4b 17   ...]..XE...A..K.
+    0070 - 9a e0 e2 d5 44 86 36 03-b9 59 d4 01 f7 78 81 58   ....D.6..Y...x.X
+    0080 - 9e 7a 7c 79 98 7c f6 a7-b7 22 15 bf 82 0e 39 41   .z|y.|..."....9A
+    0090 - e6 36 b0 ba ef b8 ab cc-45 8b 93 98 f4 49 68 3f   .6......E....Ih?
 
-    Start Time: 1578582503
+    Start Time: 1579551273
     Timeout   : 7200 (sec)
     Verify return code: 18 (self signed certificate)
     Extended master secret: no

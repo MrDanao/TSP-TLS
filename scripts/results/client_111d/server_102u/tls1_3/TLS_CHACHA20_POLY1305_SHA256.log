@@ -1,5 +1,5 @@
+140016012766536:error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure:ssl/record/rec_layer_s3.c:1543:SSL alert number 40
 CONNECTED(00000004)
-140648632450376:error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure:ssl/record/rec_layer_s3.c:1543:SSL alert number 40
 ---
 no peer certificate available
 ---

@@ -1,29 +1,69 @@
 CONNECTED(00000003)
 ---
-no peer certificate available
+Certificate chain
+ 0 s:/C=AU/ST=Some-State/O=Internet Widgits Pty Ltd
+   i:/C=AU/ST=Some-State/O=Internet Widgits Pty Ltd
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIB4DCCAYWgAwIBAgIUCXxxGEjDfI8qZM/lYEyRO/5FAH8wCgYIKoZIzj0EAwIw
+RTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoMGElu
+dGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yMDAxMjAxOTU0MTVaFw0yMTAxMTkx
+OTU0MTVaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYD
+VQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwWTATBgcqhkjOPQIBBggqhkjO
+PQMBBwNCAAQEWvQ5kNNn0gohxZiHN8GZ2c2YUKQBqHDOBcDHaOesleIQlq72x5jF
+w74Y1H7BLGlwvZuJ3N/4jF8UdT098W+ho1MwUTAdBgNVHQ4EFgQU5K267TWlHB0Y
+HXW940sLw8SUXeEwHwYDVR0jBBgwFoAU5K267TWlHB0YHXW940sLw8SUXeEwDwYD
+VR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNJADBGAiEA4GScbVO50YAPJtbP4fny
+StHIpNxRcMsSij4Qe2KiM/sCIQDY7Um4nntc3KIF6WOb68OZOQRfQylRLfyllN5r
+hm7Z4g==
+-----END CERTIFICATE-----
+subject=/C=AU/ST=Some-State/O=Internet Widgits Pty Ltd
+issuer=/C=AU/ST=Some-State/O=Internet Widgits Pty Ltd
 ---
 No client certificate CA names sent
+Peer signing digest: SHA512
+Server Temp Key: X25519, 253 bits
 ---
-SSL handshake has read 7 bytes and written 124 bytes
-Verification: OK
+SSL handshake has read 917 bytes and written 209 bytes
+Verification error: self signed certificate
 ---
-New, (NONE), Cipher is (NONE)
-Secure Renegotiation IS NOT supported
+New, TLSv1.2, Cipher is ECDHE-ECDSA-CHACHA20-POLY1305
+Server public key is 256 bit
+Secure Renegotiation IS supported
 Compression: NONE
 Expansion: NONE
 No ALPN negotiated
 SSL-Session:
     Protocol  : TLSv1.2
-    Cipher    : 0000
-    Session-ID: 
+    Cipher    : ECDHE-ECDSA-CHACHA20-POLY1305
+    Session-ID: F5C16430982A7033DAC27408E163F9782627002973991734BC53227E451EE625
     Session-ID-ctx: 
-    Master-Key: 
+    Master-Key: 6E4FC5F78C0124BF61B1114BD85366500B156CB899300842B2723CC129C02EC325E6A0F74F5B0B20B640106FD8274338
     PSK identity: None
     PSK identity hint: None
     SRP username: None
-    Start Time: 1578582437
+    TLS session ticket lifetime hint: 7200 (seconds)
+    TLS session ticket:
+    0000 - 96 b4 52 8f bc bc 34 11-ff 12 75 5b 5f 64 32 dc   ..R...4...u[_d2.
+    0010 - 48 50 78 5b 9f 80 7b 04-2c e1 75 80 b8 a8 6c 4f   HPx[..{.,.u...lO
+    0020 - e6 af 8a cf 51 34 90 2a-b8 13 87 5e 4c 41 04 97   ....Q4.*...^LA..
+    0030 - df 1a 93 03 fc e0 f1 4f-d2 df 29 06 56 15 48 73   .......O..).V.Hs
+    0040 - 85 6e 40 86 a8 a1 53 be-3e 3e ce 76 3c da 4b 23   .n@...S.>>.v<.K#
+    0050 - b9 af 76 72 7c 0b 71 81-b5 1d cc d2 c4 2e d8 21   ..vr|.q........!
+    0060 - 55 ac 98 56 bc 23 35 39-ea 5b 8c e2 de 1f 19 57   U..V.#59.[.....W
+    0070 - 33 92 3a 96 30 d1 03 fc-91 3d b3 83 dd 80 07 cf   3.:.0....=......
+    0080 - c8 4b d0 80 62 57 ee 00-09 3e b5 af 18 6f 09 92   .K..bW...>...o..
+    0090 - 57 7a be 29 40 31 76 f2-dd d7 f1 ad 33 7d e5 e1   Wz.)@1v.....3}..
+
+    Start Time: 1579551205
     Timeout   : 7200 (sec)
-    Verify return code: 0 (ok)
-    Extended master secret: no
+    Verify return code: 18 (self signed certificate)
+    Extended master secret: yes
 ---
-139943988908480:error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure:ssl/record/rec_layer_s3.c:1407:SSL alert number 40
+depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
+verify error:num=18:self signed certificate
+verify return:1
+depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd
+verify return:1
+DONE
